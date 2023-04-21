@@ -13,7 +13,7 @@ public class Movement : MonoBehaviour
     }
     //'Update' updates every frame (the higher the framerate the more the code is executed per second), fixedupdate updates at a specific interval,
     //decided by the engine
-    void FixedUpdate()
+    void Update()
     {
         /* METODO ORIGINAL
         if (Input.GetKey("d")){
@@ -38,9 +38,9 @@ public class Movement : MonoBehaviour
         */
 
         // MÉTODO Lucoero
-        float xMov = Input.GetAxisRaw("Horizontal"); // If d is pressed, it returns 1. Elseif a is pressed, it returs -1
-        float zMov = Input.GetAxisRaw("Vertical"); // If w is pressed, it returns 1. Elseif s is pressed, it returns -1
-        rb.velocity = new Vector3(xMov, rb.velocity.y, zMov) * speed; // We introduce the new velocity.
+        float xMov = Input.GetAxisRaw("EjeX") * speed; // If d is pressed, it returns 1. Elseif a is pressed, it returs -1
+        float zMov = Input.GetAxisRaw("EjeZ") * speed; // If w is pressed, it returns 1. Elseif s is pressed, it returns -1
+        rb.velocity = new Vector3(xMov,rb.velocity.y,zMov); // We introduce the new velocity.
         /* Due to changing velocity property we need friction in order to return to a static state.
          * NO KEY WILL STOP MOVEMENT because we are replacing old speeds with new ones. 
         */
