@@ -5,7 +5,7 @@ using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Mov3 : MonoBehaviour
+public class playerMovement: MonoBehaviour
 {
     /* Información del Método 3
     Utiliza la misma librería que el Método 2, pero usando los eventos de acción
