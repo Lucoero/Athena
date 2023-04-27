@@ -36,11 +36,6 @@ public class playerMovement: MonoBehaviour
     {
         playerControls = new PlayerInputClass(); // Instancio para iniciar el script.
     }
-    void Start()
-    {
-        Debug.Log("Goobert");
-    }
-
     // A continuación se crean eventos necesarios para la libreria Input
     public void OnEnable()
     {

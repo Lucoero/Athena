@@ -18,7 +18,7 @@
                     "name": "Look",
                     "type": "Value",
                     "id": "e5c68a08-d5ae-4603-9db1-1601bdf7fe49",
-                    "expectedControlType": "Vector2",
+                    "expectedControlType": "Quaternion",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -767,6 +767,34 @@
                     "processors": "",
                     "groups": "XR",
                     "action": "TrackedDeviceOrientation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "RadioMinigame",
+            "id": "22c53d7c-1ee6-401a-8b50-7087d48005f8",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "fe54a386-2691-4133-8b6a-3ecb584b67ea",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "36816cb5-dfdf-42b6-aed0-00abc748feca",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "New action",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
