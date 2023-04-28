@@ -40,7 +40,7 @@ public partial class @PlayerInputClass: IInputActionCollection2, IDisposable
                     ""name"": ""Look"",
                     ""type"": ""Value"",
                     ""id"": ""e5c68a08-d5ae-4603-9db1-1601bdf7fe49"",
-                    ""expectedControlType"": ""Quaternion"",
+                    ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true

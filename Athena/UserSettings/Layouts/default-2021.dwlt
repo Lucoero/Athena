@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 997
   m_ShowMode: 4
-  m_Title: Console
+  m_Title: Project
   m_RootView: {fileID: 8}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -43,8 +43,8 @@ MonoBehaviour:
     y: 358
     width: 1466
     height: 256
-  m_MinSize: {x: 101, y: 121}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 18}
   m_Panes:
   - {fileID: 18}
@@ -69,8 +69,8 @@ MonoBehaviour:
     y: 0
     width: 551
     height: 358
-  m_MinSize: {x: 202, y: 221}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 19}
   m_Panes:
   - {fileID: 19}
@@ -100,7 +100,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 300}
   m_MaxSize: {x: 32384, y: 24288}
   vertical: 0
-  controlID: 17
+  controlID: 148
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -275,7 +275,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 300}
   m_MaxSize: {x: 24288, y: 24288}
   vertical: 1
-  controlID: 74
+  controlID: 149
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -301,7 +301,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 8096}
   vertical: 0
-  controlID: 75
+  controlID: 150
 --- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -370,22 +370,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Models/Player/Assets/InputActions
+    - Assets/Models/Player/Scripts
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Models/Player/Assets/InputActions
+  - Assets/Models/Player/Scripts
   m_LastFoldersGridSize: -1
   m_LastProjectPath: E:\Proyectos Unity\Athena\Athena
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: c85a0000
-    m_LastClickedID: 23240
-    m_ExpandedIDs: 00000000885a00008a5a00008c5a0000b25a0000ca5a0000
+    scrollPos: {x: 0, y: 12}
+    m_SelectedIDs: b65a0000
+    m_LastClickedID: 23222
+    m_ExpandedIDs: 000000008c5a00008e5a0000905a00009e5a0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -413,7 +413,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000885a00008a5a00008c5a0000
+    m_ExpandedIDs: 000000008c5a00008e5a0000905a0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -543,7 +543,7 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 5a5a0000
+      m_SelectedIDs: a21f0000
       m_LastClickedID: 0
       m_ExpandedIDs: 32fbffff
       m_RenameOverlay:
@@ -828,9 +828,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 3.1923442, y: -0.8794217, z: 4.8948717}
+    m_Target: {x: 0.4241128, y: 0.65540886, z: -0.18713284}
     speed: 2
-    m_Value: {x: 3.1923442, y: -0.8794217, z: 4.8948717}
+    m_Value: {x: 0.4241128, y: 0.65540886, z: -0.18713284}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -877,17 +877,17 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.3066983, y: -0.65109515, z: 0.3256828, w: -0.61315393}
+    m_Target: {x: 0.13477434, y: -0.8617356, z: 0.38514656, w: 0.30153894}
     speed: 2
-    m_Value: {x: -0.30669588, y: -0.65109, z: 0.32568023, w: -0.6131491}
+    m_Value: {x: 0.13477328, y: -0.8617288, z: 0.38514352, w: 0.30153656}
   m_Size:
-    m_Target: 5.1911454
+    m_Target: 3.5195472
     speed: 2
-    m_Value: 5.1911454
+    m_Value: 3.5195472
   m_Ortho:
-    m_Target: 1
+    m_Target: 0
     speed: 2
-    m_Value: 1
+    m_Value: 0
   m_CameraSettings:
     m_Speed: 1
     m_SpeedNormalized: 0.5

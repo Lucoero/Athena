@@ -13,10 +13,11 @@ public class playerRotation : MonoBehaviour
     */
 
     // VARIABLES
-    int rotationSpeed = 5;
-    Rigidbody rb;
-    PlayerInputClass playerControls;
+    public float rotationSpeed = 1;
+    public Rigidbody rb;
+    public PlayerInputClass playerControls;
     private InputAction look;
+
 
     // FUNCIONES
     public void Awake()
@@ -33,9 +34,13 @@ public class playerRotation : MonoBehaviour
     {
         look.Disable();
     }
-    void FixedUpdate() // Update is called once per frame
+    void Update() // Update is called once per frame
     {
-        Vector3 orientation = look.ReadValue<Vector3>() * rotationSpeed;
-        rb.MoveRotation(Quaternion.Euler(orientation));
+        // FORMA 1: Al moverse el ratón se rota el objeto
+        // Vector2 orientation = look.ReadValue<Vector2>() * rotationSpeed;
+        // rb.transform.Rotate(0f, orientation.x, 0f);
+        // Forma 2: El objeto apunta en la dirección del ratón
+        Vector2 mousePosition = Mouse.current.position.ReadValue() * rotationSpeed;
+        rb.rotation = Quaternion.Euler(0f,mousePosition.x, 0f);
     }
 }

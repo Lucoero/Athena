@@ -28,7 +28,8 @@ public class playerMovement: MonoBehaviour
     public PlayerInputClass playerControls; // De aquí obtendré los controles
     private InputAction move; // Para configurar el movimiento
     private InputAction interactuar; // Para configuar el interactuar
-    private void Interactuo(InputAction.CallbackContext context) // La variable es del tipo que hace Input al funcionar
+    private void Interactuo(InputAction.CallbackContext context) // La variable es del tipo que hace Input al funcionar.
+        // También se puede hacer con OnInteractuar() (Send messages behaviour)
     {
         Debug.Log("He interactuao Padre"); // Anuncio en Unity que, ciertamente, he funcionado
     }
