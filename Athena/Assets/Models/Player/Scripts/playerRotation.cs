@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.iOS;
 
 public class playerRotation : MonoBehaviour
 {
@@ -40,7 +41,19 @@ public class playerRotation : MonoBehaviour
         // Vector2 orientation = look.ReadValue<Vector2>() * rotationSpeed;
         // rb.transform.Rotate(0f, orientation.x, 0f);
         // Forma 2: El objeto apunta en la dirección del ratón
+        /*
         Vector2 mousePosition = Mouse.current.position.ReadValue() * rotationSpeed;
+        Debug.Log(mousePosition.x);
         rb.rotation = Quaternion.Euler(0f,mousePosition.x, 0f);
+        */
+        // Forma 3: Calculo el angulo de rotacion con trigonometria
+        Vector2 mousePosition = Mouse.current.position.ReadValue();
+        Vector2 objectPosition = transform.position;
+        Vector2 fromObjectToMouse = mousePosition - objectPosition;
+        float angle = Mathf.Atan2(fromObjectToMouse.x,fromObjectToMouse.y)*Mathf.Rad2Deg;
+        Debug.Log(angle);
+        rb.rotation = Quaternion.AngleAxis(angle, Vector3.up);
+        
+
     }
 }
