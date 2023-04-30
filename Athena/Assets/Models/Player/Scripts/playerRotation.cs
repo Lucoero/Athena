@@ -16,24 +16,31 @@ public class playerRotation : MonoBehaviour
     // VARIABLES
     public float rotationSpeed = 1;
     public Rigidbody rb;
+    // Codigo solo para Forma 1
     public PlayerInputClass playerControls;
-    private InputAction look;
-
-
-    // FUNCIONES
+    public InputAction look;
+    private Camera cam;
     public void Awake()
     {
         playerControls = new PlayerInputClass();
     }
-    private void OnEnable()
+    public void Start()
+    {
+        cam = Camera.main;
+    }
+    public void OnEnable()
     {
         look = playerControls.Player.Look;
         look.Enable();
     }
-
-    private void OnDisable()
+    public void OnDisable()
     {
         look.Disable();
+    }
+    // FUNCIONES
+    void representarVector(Vector3 v, string name = "vector")
+    {
+        Debug.Log(string.Format("{0}: ({1};{2};{3})",name,v.x,v.y,v.z));
     }
     void Update() // Update is called once per frame
     {
@@ -46,14 +53,16 @@ public class playerRotation : MonoBehaviour
         Debug.Log(mousePosition.x);
         rb.rotation = Quaternion.Euler(0f,mousePosition.x, 0f);
         */
-        // Forma 3: Calculo el angulo de rotacion con trigonometria
-        Vector2 mousePosition = Mouse.current.position.ReadValue();
-        Vector2 objectPosition = transform.position;
-        Vector2 fromObjectToMouse = mousePosition - objectPosition;
+        // Forma 3: Calculo el angulo de rotacion con trigonometria respecto al plano xz
+        // PROBLEMA: LA POSICION DEL RATON Y LA DEL OBJETO NO PARECEN TENER EL MISMO SISTEMA DE REFERENCIA. 
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()); // La posición, por alguna razón, es constante.
+        representarVector(mousePosition, "mousePosition");
+        Vector3 objectPosition = transform.position;
+        //representarVector(objectPosition, "objectPosition");
+        Vector3 fromObjectToMouse = mousePosition - objectPosition;
+        // representarVector(fromObjectToMouse,"fromObjectToMouse");
         float angle = Mathf.Atan2(fromObjectToMouse.x,fromObjectToMouse.y)*Mathf.Rad2Deg;
-        Debug.Log(angle);
+        //Debug.Log("Ángulo de giro (grados): " + angle);
         rb.rotation = Quaternion.AngleAxis(angle, Vector3.up);
-        
-
     }
 }

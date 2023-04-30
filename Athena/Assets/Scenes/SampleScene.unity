@@ -426,7 +426,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1618568115}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.09, y: 1.14, z: 1.08}
+  m_LocalPosition: {x: 1.35, y: 0.99, z: 1.17}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -491,6 +491,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 1
   rb: {fileID: 1618568116}
+  look:
+    m_Name: Look
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: ef6a1bbb-b3ac-4543-bc15-291f64cb099d
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!1 &1760939669
 GameObject:
   m_ObjectHideFlags: 0
