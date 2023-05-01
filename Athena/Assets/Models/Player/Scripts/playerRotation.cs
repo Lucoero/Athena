@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.iOS;
+using UnityEngine.UIElements;
 
 public class playerRotation : MonoBehaviour
 {
@@ -16,17 +18,25 @@ public class playerRotation : MonoBehaviour
     // VARIABLES
     public float rotationSpeed = 1;
     public Rigidbody rb;
+    private Camera cam;
+    private Vector2 lastMousePositionXZ;
     // Codigo solo para Forma 1
     public PlayerInputClass playerControls;
     public InputAction look;
-    private Camera cam;
+   
+
     public void Awake()
     {
         playerControls = new PlayerInputClass();
     }
     public void Start()
     {
+
         cam = Camera.main;
+        Vector3 lastMousePosition = new Vector3(Mouse.current.position.ReadValue().x, Mouse.current.position.ReadValue().y, rb.position.z);
+        lastMousePosition = cam.ScreenToWorldPoint(lastMousePosition);
+        lastMousePositionXZ = new Vector2(lastMousePosition.x, lastMousePosition.z);
+        
     }
     public void OnEnable()
     {
@@ -40,7 +50,7 @@ public class playerRotation : MonoBehaviour
     // FUNCIONES
     void representarVector(Vector3 v, string name = "vector")
     {
-        Debug.Log(string.Format("{0}: ({1};{2};{3})",name,v.x,v.y,v.z));
+        UnityEngine.Debug.Log(string.Format("{0}: ({1};{2};{3})",name,v.x,v.y,v.z));
     }
     void Update() // Update is called once per frame
     {
@@ -54,15 +64,30 @@ public class playerRotation : MonoBehaviour
         rb.rotation = Quaternion.Euler(0f,mousePosition.x, 0f);
         */
         // Forma 3: Calculo el angulo de rotacion con trigonometria respecto al plano xz
-        // PROBLEMA: LA POSICION DEL RATON Y LA DEL OBJETO NO PARECEN TENER EL MISMO SISTEMA DE REFERENCIA. 
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()); // La posición, por alguna razón, es constante.
-        representarVector(mousePosition, "mousePosition");
-        Vector3 objectPosition = transform.position;
-        //representarVector(objectPosition, "objectPosition");
-        Vector3 fromObjectToMouse = mousePosition - objectPosition;
-        // representarVector(fromObjectToMouse,"fromObjectToMouse");
-        float angle = Mathf.Atan2(fromObjectToMouse.x,fromObjectToMouse.y)*Mathf.Rad2Deg;
-        //Debug.Log("Ángulo de giro (grados): " + angle);
+        // 1. Obtengo la posición de la cámara dentro del juego, y la del objeto
+        Vector3 mousePosition3D = new Vector3(Mouse.current.position.ReadValue().x, Mouse.current.position.ReadValue().y, rb.position.z); // La ultima coordenada es la distancia al plano de lectura.
+        mousePosition3D = cam.ScreenToWorldPoint(mousePosition3D); 
+        Vector2 mousePositionXZ = new Vector2(mousePosition3D.x, mousePosition3D.y);
+        //representarVector(mousePositionXZ, "mousePositionXZ");
+        //representarVector(lastMousePositionXZ, "lastMousePositionXZ");
+
+        Vector3 objectPosition = rb.position;
+        Vector2 objectPositionXZ = new Vector2(objectPosition.x, objectPosition.z);
+        representarVector(objectPosition, "objectPosition");
+
+        // 2. Calculo la distancia entre mousePosition y lastMousePosition
+        float distanceMouses = (mousePositionXZ - lastMousePositionXZ).magnitude;
+        //UnityEngine.Debug.Log("Distancia entre ratones: " + distanceMouses);
+
+        // 3. Calculo la distancia entre el objeto y lastMousePosition
+        float distanceObjectlastMouse = (lastMousePositionXZ- objectPositionXZ).magnitude;
+        //UnityEngine.Debug.Log("Distancia entre objeto y lastMouse: " + distanceObjectlastMouse);
+        lastMousePositionXZ = mousePositionXZ; // Actualizo la ultima posicion.
+        // 4. Calculo el angulo con la tangente.
+        float angle = Mathf.Atan2(distanceObjectlastMouse, distanceMouses) *Mathf.Rad2Deg;
+        //UnityEngine.Debug.Log("Angle: " + angle);
+
+        // 5. Roto el objeto
         rb.rotation = Quaternion.AngleAxis(angle, Vector3.up);
     }
 }
