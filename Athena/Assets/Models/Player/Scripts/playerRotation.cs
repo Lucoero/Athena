@@ -82,12 +82,16 @@ public class playerRotation : MonoBehaviour
         // 3. Calculo la distancia entre el objeto y lastMousePosition
         float distanceObjectlastMouse = (lastMousePositionXZ- objectPositionXZ).magnitude;
         //UnityEngine.Debug.Log("Distancia entre objeto y lastMouse: " + distanceObjectlastMouse);
+
+        // 4. Calculo la distancia entrer el objeto y el Mouse
+        float distanceObjectMouse = (mousePositionXZ - objectPositionXZ).magnitude;
         lastMousePositionXZ = mousePositionXZ; // Actualizo la ultima posicion.
-        // 4. Calculo el angulo con la tangente.
-        float angle = Mathf.Atan2(distanceObjectlastMouse, distanceMouses) *Mathf.Rad2Deg;
+        // 5. Calculo el angulo con el teorema del coseno
+        float angle = Mathf.Acos((Mathf.Pow(distanceObjectMouse, 2) + Mathf.Pow(distanceObjectlastMouse, 2) -Mathf.Pow(distanceMouses,2)) /
+            (2*Mathf.Pow(distanceObjectMouse,2)*Mathf.Pow(distanceObjectlastMouse,2))) *Mathf.Rad2Deg;
         //UnityEngine.Debug.Log("Angle: " + angle);
 
-        // 5. Roto el objeto
+        // 6. Roto el objeto
         rb.rotation = Quaternion.AngleAxis(angle, Vector3.up);
     }
 }
