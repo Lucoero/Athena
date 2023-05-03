@@ -6,9 +6,9 @@ using UnityEngine.InputSystem;
 using UnityEngine.iOS;
 using UnityEngine.UIElements;
 
-public class playerRotation : MonoBehaviour
+public class playerRotation2 : MonoBehaviour
 {
-    /* Forma 1: El objeto apunta en la dirección del ratón
+    /* Forma 2: Calculo el angulo de rotacion con trigonometria respecto al plano xz
 	Permite rotar al personaje respecto al eje y.
     Esto, en un futuro, se encargará de mover la luz de la linterna.
     */
@@ -17,7 +17,8 @@ public class playerRotation : MonoBehaviour
     public Rigidbody rb;
     public PlayerInputClass playerControls;
     public InputAction look;
-   
+
+
     public void Awake()
     {
         playerControls = new PlayerInputClass();
@@ -31,16 +32,15 @@ public class playerRotation : MonoBehaviour
     {
         look.Disable();
     }
-    // FUNCIONES
+
+    //FUNCIONES
     void Update()
     {
         Vector3 mousePos = Mouse.current.position.ReadValue();
         Vector3 objectPos = Camera.main.WorldToScreenPoint(rb.position);
-        Vector3 mouseToObject = new Vector3 (0f,rb.position.y,0f); // Hay que mantener el plano en y. 
-        mouseToObject.x = mousePos.x - objectPos.x;
-        mouseToObject.z = mousePos.y - objectPos.y;
-        Vector3 uMouseToObject = mouseToObject.normalized;
-        rb.rotation = Quaternion.LookRotation(uMouseToObject, Vector3.up); // Me convierte el vector director en un angulo de giro.
-        // LookRotation, por alguna razón, me hace avanzar tambien en la direccion del raton. Desaparece con la opcion IsKinematic
+        mousePos.x = mousePos.x - objectPos.x;
+        mousePos.y = mousePos.y - objectPos.y;
+        float angle = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg;
+        rb.rotation = Quaternion.Euler(new Vector3(0f, -angle, 0f)); // No se por que con angle rota en sentido contrario. Magico.
     }
 }
