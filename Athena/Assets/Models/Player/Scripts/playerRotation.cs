@@ -32,7 +32,7 @@ public class playerRotation : MonoBehaviour
         look.Disable();
     }
     // FUNCIONES
-    void Update()
+    void FixedUpdate()
     {
         Vector3 mousePos = Mouse.current.position.ReadValue();
         Vector3 objectPos = Camera.main.WorldToScreenPoint(rb.position);
