@@ -331,6 +331,7 @@ GameObject:
   - component: {fileID: 1618568116}
   - component: {fileID: 1618568125}
   - component: {fileID: 1618568126}
+  - component: {fileID: 1618568127}
   - component: {fileID: 1618568122}
   m_Layer: 0
   m_Name: Player
@@ -484,7 +485,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1618568115}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 09d5a0499a9186040bf7e15ab34de053, type: 3}
   m_Name: 
@@ -495,6 +496,28 @@ MonoBehaviour:
     m_Type: 0
     m_ExpectedControlType: 
     m_Id: 1fdf7e3a-80ae-4ef1-a6ee-0797be74f96f
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+--- !u!114 &1618568127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1618568115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7e7d4556afcb204098082cdbbffaae8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 1618568116}
+  move:
+    m_Name: Move
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: c0a61261-ca21-460b-aa82-228268c058cd
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings: []

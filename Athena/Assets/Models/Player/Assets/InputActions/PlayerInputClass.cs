@@ -53,6 +53,15 @@ public partial class @PlayerInputClass: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Usar"",
+                    ""type"": ""Button"",
+                    ""id"": ""07141dda-c922-4e77-87e3-c9dcc28d4ad4"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -235,7 +244,7 @@ public partial class @PlayerInputClass: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""05f6913d-c316-48b2-a6bb-e225f14c7960"",
-                    ""path"": ""<Mouse>/leftButton"",
+                    ""path"": ""<Mouse>/rightButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
@@ -273,6 +282,17 @@ public partial class @PlayerInputClass: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""XR"",
                     ""action"": ""Interactuar"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c6c042d2-13e0-4dc4-ac53-04b0d9893f1f"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Usar"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -891,6 +911,7 @@ public partial class @PlayerInputClass: IInputActionCollection2, IDisposable
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
         m_Player_Interactuar = m_Player.FindAction("Interactuar", throwIfNotFound: true);
+        m_Player_Usar = m_Player.FindAction("Usar", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -970,6 +991,7 @@ public partial class @PlayerInputClass: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Look;
     private readonly InputAction m_Player_Interactuar;
+    private readonly InputAction m_Player_Usar;
     public struct PlayerActions
     {
         private @PlayerInputClass m_Wrapper;
@@ -977,6 +999,7 @@ public partial class @PlayerInputClass: IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @Look => m_Wrapper.m_Player_Look;
         public InputAction @Interactuar => m_Wrapper.m_Player_Interactuar;
+        public InputAction @Usar => m_Wrapper.m_Player_Usar;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -995,6 +1018,9 @@ public partial class @PlayerInputClass: IInputActionCollection2, IDisposable
             @Interactuar.started += instance.OnInteractuar;
             @Interactuar.performed += instance.OnInteractuar;
             @Interactuar.canceled += instance.OnInteractuar;
+            @Usar.started += instance.OnUsar;
+            @Usar.performed += instance.OnUsar;
+            @Usar.canceled += instance.OnUsar;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -1008,6 +1034,9 @@ public partial class @PlayerInputClass: IInputActionCollection2, IDisposable
             @Interactuar.started -= instance.OnInteractuar;
             @Interactuar.performed -= instance.OnInteractuar;
             @Interactuar.canceled -= instance.OnInteractuar;
+            @Usar.started -= instance.OnUsar;
+            @Usar.performed -= instance.OnUsar;
+            @Usar.canceled -= instance.OnUsar;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1239,6 +1268,7 @@ public partial class @PlayerInputClass: IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
         void OnInteractuar(InputAction.CallbackContext context);
+        void OnUsar(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
