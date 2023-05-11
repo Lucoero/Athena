@@ -35,12 +35,13 @@ public class rotateTowardsMovement : MonoBehaviour
     {
         // Si la flashlight no está equipada, obten la direccion y rota guay
         Vector2 movDirection = move.ReadValue<Vector2>(); // Calculo 
-        float angle = Mathf.Atan2(movDirection.x,movDirection.y)*Mathf.Rad2Deg;
-        Quaternion Rotation = Quaternion.Euler(new Vector3(0f, -angle, 0f));
-        float velocity = rb.velocity.y;
-        float smoothAngle = Mathf.SmoothDampAngle(transform.eulerAngles.y, angle,ref velocity,0.1f);
-        rb.rotation = Quaternion.Euler(new Vector3(0f,smoothAngle,0f));
-
-
+        if (movDirection.x != 0 || movDirection.y != 0 ) // Cuyo caso hay input.
+        {
+            float angle = Mathf.Atan2(movDirection.x, movDirection.y) * Mathf.Rad2Deg;
+            Quaternion Rotation = Quaternion.Euler(new Vector3(0f, -angle, 0f));
+            float velocity = rb.velocity.y;
+            float smoothAngle = Mathf.SmoothDampAngle(transform.eulerAngles.y, angle, ref velocity, 0.05f);
+            rb.rotation = Quaternion.Euler(new Vector3(0f, smoothAngle, 0f));
+        }
     }
 }
