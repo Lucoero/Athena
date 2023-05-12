@@ -23,16 +23,16 @@ public class playerMovement: MonoBehaviour
     - Mismas que el Método 2, con tal vez un código un poco más complejo.
     */
 
-    public int speed = 10;
+    public int walkingSpeed = 10;
+    public int runningSpeed = 15;
+    public int speed;
+    int counter = 0;
+    public Vector2 xzSpeed;
+   
     public Rigidbody rb;
     public PlayerInputClass playerControls; // De aquí obtendré los controles
     private InputAction move; // Para configurar el movimiento
-    private InputAction interactuar; // Para configuar el interactuar
-    private void Interactuo(InputAction.CallbackContext context) // La variable es del tipo que hace Input al funcionar.
-        // También se puede hacer con OnInteractuar() (Send messages behaviour)
-    {
-        Debug.Log("He interactuao Padre"); // Anuncio en Unity que, ciertamente, he funcionado
-    }
+    private InputAction run;
     public void Awake()
     {
         playerControls = new PlayerInputClass(); // Instancio para iniciar el script.
@@ -40,27 +40,36 @@ public class playerMovement: MonoBehaviour
     // A continuación se crean eventos necesarios para la libreria Input
     public void OnEnable()
     {
-        // Para el movimiento
         move = playerControls.Player.Move; // Accedo a subapartado de Player en la acción, y luego concretamente a su movimiento.
         move.Enable(); // Activo la entrada de Input
 
-        // Para interactuar
-        interactuar = playerControls.Player.Interactuar; // Igual que con Player.Move de arriba
-        interactuar.Enable();
-        interactuar.performed += Interactuo; //  Relaciono el control interactuar con la función que ejecuta la interactuación.
+        run = playerControls.Player.Run;
+        run.Enable();
+        run.performed += WannaRun;
     }
     public void OnDisable()
     {
-        // Para el movimiento
         move.Disable(); // No me hace falta redefinirlo pues ya lo he hecho en OnEnable.
-
-        // Para interactuar
-        interactuar.Disable();
+        run.Disable();
+    }
+    public void WannaRun(InputAction.CallbackContext context) // Captura si se pulsa o despulsa el shift
+    {
+        counter += 1;
+        if (counter%2 != 0) // Se pulsa un número impar --> Corre
+        {
+            speed = runningSpeed;
+        }
+        else // Se pulsa un número par --> Anda y resetea el counter
+        {
+            speed = walkingSpeed;
+            counter = 0;
+        }
     }
     // Durante el juego
     void FixedUpdate()
     {
-        Vector2 xzSpeed = move.ReadValue<Vector2>() * speed; // Los almacena como x e y, pero nuestra y será una z. 
+        xzSpeed = move.ReadValue<Vector2>() * speed;
+        // xzSpeed Los almacena como x e y, pero nuestra y será una z. 
         rb.velocity = new Vector3(xzSpeed.x, rb.velocity.y, xzSpeed.y);
     }
 }

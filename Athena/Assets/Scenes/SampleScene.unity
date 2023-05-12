@@ -332,6 +332,7 @@ GameObject:
   - component: {fileID: 1618568125}
   - component: {fileID: 1618568126}
   - component: {fileID: 1618568127}
+  - component: {fileID: 1618568128}
   - component: {fileID: 1618568122}
   m_Layer: 0
   m_Name: Player
@@ -476,7 +477,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52bbd7c8f18e0ba41bcb84eea4e9d463, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  walkingSpeed: 10
+  runningSpeed: 20
   speed: 10
+  xzSpeed: {x: 0, y: 0}
   rb: {fileID: 1618568116}
 --- !u!114 &1618568126
 MonoBehaviour:
@@ -518,6 +522,27 @@ MonoBehaviour:
     m_Type: 0
     m_ExpectedControlType: 
     m_Id: c0a61261-ca21-460b-aa82-228268c058cd
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+--- !u!114 &1618568128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1618568115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 241fc0c69f7d19c4ba6c84ee00b51817, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactuar:
+    m_Name: Interactuar
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: dcea64ee-c0ca-479b-99e6-e89c502fb475
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings: []
