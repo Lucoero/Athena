@@ -5,8 +5,9 @@ using UnityEngine.InputSystem;
 
 public class rotateTowardsMovement : MonoBehaviour
 {
-    /* COMENTARIO PARA DESCRBIR EL SCRIPT
-	
+    /* rotateTowardsMovement
+     * Dado un objeto que se mueve con los contrles de InputSystem,
+     * este rotará para mantener su "frente" en dirección al movimiento
     */
 
     // VARIABLES
@@ -38,7 +39,6 @@ public class rotateTowardsMovement : MonoBehaviour
         if (movDirection.x != 0 || movDirection.y != 0 ) // Cuyo caso hay input.
         {
             float angle = Mathf.Atan2(movDirection.x, movDirection.y) * Mathf.Rad2Deg;
-            Quaternion Rotation = Quaternion.Euler(new Vector3(0f, -angle, 0f));
             float velocity = rb.velocity.y;
             float smoothAngle = Mathf.SmoothDampAngle(transform.eulerAngles.y, angle, ref velocity, 0.05f);
             rb.rotation = Quaternion.Euler(new Vector3(0f, smoothAngle, 0f));

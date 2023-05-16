@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.iOS;
 using UnityEngine.UIElements;
 
-public class playerRotation : MonoBehaviour
+public class rotateTowardsMouse : MonoBehaviour
 {
     /* Forma 2: Calculo el angulo de rotacion con trigonometria respecto al plano xz
 	Permite rotar al personaje respecto al eje y.
@@ -15,23 +15,6 @@ public class playerRotation : MonoBehaviour
 
     // VARIABLES PUBLICAS
     public Rigidbody rb;
-    public PlayerInputClass playerControls;
-    public InputAction look;
-
-
-    public void Awake()
-    {
-        playerControls = new PlayerInputClass();
-    }
-    public void OnEnable()
-    {
-        look = playerControls.Player.Look;
-        look.Enable();
-    }
-    public void OnDisable()
-    {
-        look.Disable();
-    }
 
     //FUNCIONES
     void FixedUpdate()
@@ -41,6 +24,9 @@ public class playerRotation : MonoBehaviour
         mousePos.x = mousePos.x - objectPos.x;
         mousePos.y = mousePos.y - objectPos.y;
         float angle = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg;
-        rb.rotation = Quaternion.Euler(new Vector3(0f, -angle, 0f)); // Hay que invertir el sentido de rotación porque por defecto es antihorario.
+
+        // Hay que invertir el sentido de rotación porque por defecto es antihorario.
+        // El +90 es para que la cara en vez del hombro derecho sea el frente.
+        rb.rotation = Quaternion.Euler(new Vector3(0f, 90f - angle , 0f)); 
     }
 }
