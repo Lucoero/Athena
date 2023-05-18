@@ -25,9 +25,9 @@ public class playerMovement: MonoBehaviour
 
     public int walkingSpeed = 10;
     public int runningSpeed = 15;
-    public int speed;
-    int counter = 0;
-    public Vector2 xzSpeed;
+    private int speed;
+    private int counter = 0;
+    private Vector2 xzSpeed;
    
     public Rigidbody rb;
     public PlayerInputClass playerControls; // De aquí obtendré los controles
@@ -66,6 +66,10 @@ public class playerMovement: MonoBehaviour
         }
     }
     // Durante el juego
+    private void Start()
+    {
+        speed = walkingSpeed;
+    }
     void FixedUpdate()
     {
         xzSpeed = move.ReadValue<Vector2>() * speed;

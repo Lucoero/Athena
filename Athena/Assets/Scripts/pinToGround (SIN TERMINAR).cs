@@ -11,6 +11,7 @@ public class pinToGround : MonoBehaviour
     */
 
     // VARIABLES
+    /*
     private Rigidbody rb;
     public Ray toGround;
     private int maxDistance = 10;
@@ -35,4 +36,5 @@ public class pinToGround : MonoBehaviour
     void FixedUpdate()
     {   
     }
+    */
 }

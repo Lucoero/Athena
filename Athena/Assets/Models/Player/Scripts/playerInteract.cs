@@ -11,7 +11,7 @@ public class playerInteract : MonoBehaviour
 
     // VARIABLES
     public PlayerInputClass playerControls;
-    public InputAction interactuar;
+    private InputAction interactuar;
 
 
     // FUNCIONES
