@@ -38,12 +38,10 @@ public class playerMovement: MonoBehaviour
         if (context.phase == InputActionPhase.Performed && speed == walkingSpeed) // Esta andando y llevas un rato pulsando el boton --> Corre. 
         {
             speed = runningSpeed;
-            Debug.Log("RunningSpeed");
         }
         else // Esta corriendo --> Anda
         {
             speed = walkingSpeed;
-            Debug.Log("walkingSpeed");
         }
         
     }
