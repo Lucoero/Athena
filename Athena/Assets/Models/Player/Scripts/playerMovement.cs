@@ -25,46 +25,33 @@ public class playerMovement: MonoBehaviour
 
     public int walkingSpeed = 10;
     public int runningSpeed = 15;
-    private int speed;
-    private int counter = 0;
-    private Vector2 xzSpeed;
-   
     public Rigidbody rb;
-    public PlayerInputClass playerControls; // De aquí obtendré los controles
-    private InputAction move; // Para configurar el movimiento
-    private InputAction run;
-    public void Awake()
-    {
-        playerControls = new PlayerInputClass(); // Instancio para iniciar el script.
-    }
-    // A continuación se crean eventos necesarios para la libreria Input
-    public void OnEnable()
-    {
-        move = playerControls.Player.Move; // Accedo a subapartado de Player en la acción, y luego concretamente a su movimiento.
-        move.Enable(); // Activo la entrada de Input
 
-        run = playerControls.Player.Run;
-        run.Enable();
-        run.performed += WannaRun;
-    }
-    public void OnDisable()
+    private int speed;
+    private Vector2 xzMove;
+    private Vector2 xzSpeed;
+    
+
+    // A continuación se crean eventos necesarios para la libreria Input
+    public void WannaRun(InputAction.CallbackContext context) // Captura si se pulsa o despulsa el shift (POR TERMINAR: Falta la stamina)
     {
-        move.Disable(); // No me hace falta redefinirlo pues ya lo he hecho en OnEnable.
-        run.Disable();
-    }
-    public void WannaRun(InputAction.CallbackContext context) // Captura si se pulsa o despulsa el shift
-    {
-        counter += 1;
-        if (counter%2 != 0) // Se pulsa un número impar --> Corre
+        if (context.phase == InputActionPhase.Performed && speed == walkingSpeed) // Esta andando y llevas un rato pulsando el boton --> Corre. 
         {
             speed = runningSpeed;
+            Debug.Log("RunningSpeed");
         }
-        else // Se pulsa un número par --> Anda y resetea el counter
+        else // Esta corriendo --> Anda
         {
             speed = walkingSpeed;
-            counter = 0;
+            Debug.Log("walkingSpeed");
         }
+        
     }
+    public void OnMovement (InputAction.CallbackContext context)
+    {
+        xzMove = context.ReadValue<Vector2>(); // Ahora xz solo se actualiza cuando se PULSA un control de movimiento.
+    }
+
     // Durante el juego
     private void Start()
     {
@@ -72,7 +59,7 @@ public class playerMovement: MonoBehaviour
     }
     void FixedUpdate()
     {
-        xzSpeed = move.ReadValue<Vector2>() * speed;
+        xzSpeed = xzMove * speed;
         // xzSpeed Los almacena como x e y, pero nuestra y será una z. 
         rb.velocity = new Vector3(xzSpeed.x, rb.velocity.y, xzSpeed.y);
     }
