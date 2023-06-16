@@ -432,7 +432,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02043cf0a8e7c564ebe46d2534b9e064, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Object: {fileID: 0}
+  Object: {fileID: 1716458631}
   offset: {x: 0, y: 15, z: 0}
 --- !u!114 &963194230
 MonoBehaviour:
@@ -675,15 +675,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 1716458626}
-  move:
-    m_Name: Move
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 7852d8bf-839e-4974-90dd-5d5c617dbd52
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
 --- !u!114 &1716458628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -724,6 +715,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 241fc0c69f7d19c4ba6c84ee00b51817, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &1716458631 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5e2775d02bde844488b8a85f866cf00f, type: 3}
+  m_PrefabInstance: {fileID: 254499811}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1797513801
 PrefabInstance:
   m_ObjectHideFlags: 0
