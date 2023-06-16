@@ -5,8 +5,9 @@ using UnityEngine.InputSystem;
 
 public class orbitAroundObject : MonoBehaviour
 {
-    /* COMENTARIO PARA DESCRBIR EL SCRIPT
-	
+    /* orbitAroundObject
+	Calcula la posición de un objeto respecto a otro siguiendo la linea que une el ratón y el objeto central. 
+    SIN TERMINAR: No tiene script para que se mueva con el giro que da el movimiento al personaje (rotate towards movement). 
     */
 
     // VARIABLES
@@ -14,7 +15,7 @@ public class orbitAroundObject : MonoBehaviour
     public Rigidbody orbitingObject;
     public Vector3 offset;
 
-    private Vector3 objectPosition;
+    private Vector3 newPosition;
     private float radius;
 
     // FUNCIONES
@@ -29,8 +30,8 @@ public class orbitAroundObject : MonoBehaviour
         Vector2 mousePos = Mouse.current.position.ReadValue();
         Vector3 centerPos = Camera.main.WorldToScreenPoint(centerObject.position);
         // El vector del objeto es el perpendicular (el hombro está en perpendicular)
-        objectPosition = new Vector3(mousePos.x - centerPos.x, orbitingObject.position.y, mousePos.y - centerPos.y);
-        objectPosition = centerObject.position + Vector3.Cross(objectPosition,Vector3.up).normalized*radius + offset; 
-        orbitingObject.position = objectPosition;
+        newPosition = new Vector3(mousePos.x - centerPos.x, orbitingObject.position.y, mousePos.y - centerPos.y);
+        newPosition = centerObject.position + Vector3.Cross(newPosition,Vector3.up).normalized*radius + offset; 
+        orbitingObject.position = newPosition;
     }
 }

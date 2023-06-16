@@ -13,7 +13,7 @@ public class rotateTowardsMovement : MonoBehaviour
     // VARIABLES
     public Rigidbody rb;
     public PlayerInputClass Controls;
-    public InputAction move;
+    private InputAction move;
 
 
     // FUNCIONES
