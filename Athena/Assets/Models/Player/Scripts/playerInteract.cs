@@ -5,36 +5,21 @@ using UnityEngine.InputSystem;
 
 public class playerInteract : MonoBehaviour
 {
-    /* COMENTARIO PARA DESCRBIR EL SCRIPT
-	
+    /* playerInteract
+     * Ofrece los eventos relacionados con el click derecho y el click izquierdo del raton
     */
 
     // VARIABLES
-    public PlayerInputClass playerControls;
-    private InputAction interactuar;
 
 
     // FUNCIONES
-    private void Interactuo(InputAction.CallbackContext context) // La variable es del tipo que hace Input al funcionar.
-                                                                 // También se puede hacer con OnInteractuar() (Send messages behaviour)
+    public void OnRightClick(InputAction.CallbackContext context)
     {
-        // POR HACER: Hay que marcar una distancia límite de interactuación.
-        Debug.Log("He interactuao Padre"); // Anuncio en Unity que, ciertamente, he funcionado
+        Debug.Log("He usado el click derecho");
     }
-
-    void Awake() 
+    public void OnLeftClick(InputAction.CallbackContext context)
     {
-        playerControls = new PlayerInputClass();
-    }
-    public void OnEnable()
-    {
-        interactuar = playerControls.Player.Interactuar;
-        interactuar.Enable();
-        interactuar.performed += Interactuo; //  Relaciono el control interactuar con la función que ejecuta la interactuación.
-    }
-
-    public void OnDisable()
-    {
-        interactuar.Disable();
+        // POR HACER: Incluir un rango efectivo de uso
+        Debug.Log("He usado el click izquierdo");
     }
 }

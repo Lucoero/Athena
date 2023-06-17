@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[CreateAssetMenu]
+[CreateAssetMenu(menuName = "Assets/Player/PlayerData")]
 public class playerData : ScriptableObject
 {
     /* playerData
@@ -15,8 +15,17 @@ public class playerData : ScriptableObject
     */
 
     // VARIABLES
-    public float vida;
+    public float maxHealth;
+    public float health;
+    public float maxStamina;
     public float stamina;
     public float losingStaminaSpeed;
-    public float Paranoia;
+    public float paranoia;
+
+    public void ResetData()
+    {
+        health = maxHealth;
+        stamina = maxStamina;
+        paranoia = 0f;
+    }
 }

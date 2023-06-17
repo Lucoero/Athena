@@ -228,21 +228,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 607027685}
---- !u!114 &607027689
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 607027678}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef7be312c6494a9438ef335f38a07116, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  centerObject: {fileID: 1716458626}
-  orbitingObject: {fileID: 607027685}
-  offset: {x: 0, y: 0, z: 0}
 --- !u!114 &607027690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -820,11 +805,19 @@ MonoBehaviour:
     m_ActionId: e5c68a08-d5ae-4603-9db1-1601bdf7fe49
     m_ActionName: Player/Look[/Mouse/delta,/Pen/delta]
   - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: beca74c2-1e8c-4429-b589-b6e77f31619e
-    m_ActionName: Player/Interactuar[/Mouse/leftButton]
-  - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1716458630}
+        m_TargetAssemblyTypeName: playerInteract, Assembly-CSharp
+        m_MethodName: OnRightClick
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 07141dda-c922-4e77-87e3-c9dcc28d4ad4
     m_ActionName: Player/Usar[/Mouse/leftButton]
   - m_PersistentCalls:
@@ -871,6 +864,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: fe54a386-2691-4133-8b6a-3ecb584b67ea
     m_ActionName: RadioMinigame/New action
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1716458630}
+        m_TargetAssemblyTypeName: playerInteract, Assembly-CSharp
+        m_MethodName: OnLeftClick
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: beca74c2-1e8c-4429-b589-b6e77f31619e
+    m_ActionName: Player/Interactuar[/Mouse/leftButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player
