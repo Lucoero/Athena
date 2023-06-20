@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7113d813b51a3674580ef818291d7811, type: 3}
   m_Name: Flashlight
   m_EditorClassIdentifier: 
-  itemName: 
-  description: "Sven\xB4s best friend, this flashlight has proven useful in nocturnal
+  itemName: "Sven\xB4s flashlight"
+  description: "Sven\xB4s best friend, this flashlight has proven useful during nocturnal
     setbacks. "
   model: {fileID: 919132149155446097, guid: cb34ea18bd46be34a8ced81658b4b738, type: 3}
   icon: {fileID: 21300000, guid: 347919df40c9b9f4aa0412f0f184f92d, type: 3}

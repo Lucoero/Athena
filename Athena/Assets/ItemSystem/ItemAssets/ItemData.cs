@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [CreateAssetMenu (menuName = "Assets/InventorySystem/ItemData")]
-public class itemData : ScriptableObject
+public class ItemData : ScriptableObject
 {
     /* itemData
      * Genera los assets de los items
