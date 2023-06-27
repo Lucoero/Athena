@@ -19,12 +19,4 @@ public class ItemData : ScriptableObject
     public GameObject model; // El modelo es el que contendrá las propiedades del objeto (es la instancia)
     public Sprite icon;
 
-    // CONSTRUCTOR
-    public ItemData()
-    {
-        itemName = null;
-        description = null;
-        model = null;
-        icon = null;
-    }
 }

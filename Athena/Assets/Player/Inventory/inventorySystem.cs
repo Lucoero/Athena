@@ -22,8 +22,8 @@ public class inventorySystem : ScriptableObject
     */
     // VARIABLES
     public int maxSize = 10; // Empezando a contar desde el 1 
-    public ItemData?[] itemList = new ItemData?[10]; // De momento no tenemos en cuenta la cantidad de cada objeto
-    public int?[] itemCount = new int?[10];
+    public ItemData[] itemList = new ItemData[10]; // De momento no tenemos en cuenta la cantidad de cada objeto
+    public int[] itemCount = new int[10];
     public void ChangeOrder(int pos1, int pos2)
     {
         // Primero comprobamos que el cambio se pueda realizar
