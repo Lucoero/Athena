@@ -282,6 +282,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Object: {fileID: 101263340}
   offset: {x: 0, y: 0, z: 0}
+--- !u!114 &607027693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 607027678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63f2073c1b7868847a93e77a4d595d4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1049,8 +1061,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1716458631}
-  pickupDistance: 5
-  inventory: {fileID: 0}
+  pickupDistance: 10
+  inventory: {fileID: 11400000, guid: a92823d5ab12f7940a754f645986f006, type: 2}
 --- !u!1 &1729245797 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: ebc2cd5a8b6ff49438219c57e7c1a912, type: 3}
@@ -1135,6 +1147,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: cb34ea18bd46be34a8ced81658b4b738, type: 3}
       propertyPath: m_Name
       value: Flashlight
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb34ea18bd46be34a8ced81658b4b738, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb34ea18bd46be34a8ced81658b4b738, type: 3}

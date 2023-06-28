@@ -11,6 +11,12 @@ public class playerData : ScriptableObject
      - Vida
      - Stamina
      - Paranoia
+     * Ademas de los metodos para modificarlos
+     - Bajar la vida
+     - Bajar la stamina
+     - Recuperar la stamina con el tiempo
+     etc
+     *
 	
     */
 

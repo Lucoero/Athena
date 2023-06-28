@@ -41,13 +41,12 @@ public class inventoryControls : MonoBehaviour
         Vector3 mousePos = Mouse.current.position.ReadValue();
         Vector3 objectPos = Camera.main.WorldToScreenPoint(player.position);
         Vector3 direccion = new Vector3(mousePos.x - objectPos.x,player.position.y ,mousePos.y - objectPos.y); // Problema de esto: Si player y object estan a distintas alturas bye bye
-
-
         // Lanzo Raycast: Compruebo que esta a una distancia maxima, y si hay algo entre medias
-        if (Physics.Raycast(player.position,direccion,out RaycastHit raycastHit, pickupDistance))
+        if (Physics.Raycast(player.position, direccion, out RaycastHit raycastHit, pickupDistance))
         {
-            Debug.Log($"Estoy seleccionando {raycastHit.transform}");
+            Debug.Log($"Estoy seleccionando {raycastHit.collider.gameObject.name}");
             // Lo intento coger. Si he podido, lo elimino de la escena. Si no, lo dejo ahi.
+            // Busco un ItemData asociado a ese objeto
             
         }
 
