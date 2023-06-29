@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.CompilerServices;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 [CreateAssetMenu(menuName = "Assets/InventorySystem/Inventory")]
@@ -36,16 +38,29 @@ public class inventorySystem : ScriptableObject
         itemList[pos1] = aux;
         return;
     }
-    public bool GetObject(ItemData newItem)
+    public bool GetObject(string objectFoundName)  // Cojo GameObject porque es lo maximo que me permite los raycasts
     {
         for (int i = 0; i < maxSize; i++)
         {
-            if (itemList[i] == null)
+            if (itemList[i] == null) // Busco espacio en el inventario
             {
-                itemList[i] = newItem;
+                // Busco un itemData que tenga este objeto asociado
+                string[] assetsPropuestos = AssetDatabase.FindAssets(objectFoundName, new string[] { "Assets/ItemSystem/ItemAssets" });
+                if (assetsPropuestos.Count() == 0)
+                {
+                    Debug.Log($"No hemos encontrado ningun asset con nombre {objectFoundName}");
+                    return false;
+                }
+                ItemData newItem = (ItemData)AssetDatabase.LoadAssetAtPath(AssetDatabase.GUIDToAssetPath(assetsPropuestos[0]), typeof(ItemData));
+                Debug.Log($"Vamos a meter en itemList {newItem.itemName} "); // Estoy cogiendo la nada, y no se por que
+                // Lo meto en las cajas
+                itemList[i] = newItem; // La funcion se activa 2 veces. La primera mete a la persona, pero como en la segunda no hay nada caput.
+                itemCount[i] = 1;
+
                 return true; // Avisamos de que se ha conseguido
             }
         }
+        Debug.Log("El inventario esta lleno");
         return false; // Si no se puede coger, lo dejamos ahi y avisamos del fallo
     }
     public bool DropObject(int pos)

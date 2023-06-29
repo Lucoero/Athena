@@ -21,7 +21,7 @@ public class inventoryControls : MonoBehaviour
     public inventorySystem inventory;
 
     bool inventoryIsOpen = false;
-
+    string objectFoundName;
     // FUNCIONES
     public void ActivateInventory(InputAction.CallbackContext context) // 1. Coge la I
     {
@@ -37,6 +37,7 @@ public class inventoryControls : MonoBehaviour
     }
     public void GetItem(InputAction.CallbackContext context) //2. Coge la E
     {
+        if (context.performed){ return; } // Para que no se repita en release
         // Calculo la direccion de la mirada
         Vector3 mousePos = Mouse.current.position.ReadValue();
         Vector3 objectPos = Camera.main.WorldToScreenPoint(player.position);
@@ -44,12 +45,15 @@ public class inventoryControls : MonoBehaviour
         // Lanzo Raycast: Compruebo que esta a una distancia maxima, y si hay algo entre medias
         if (Physics.Raycast(player.position, direccion, out RaycastHit raycastHit, pickupDistance))
         {
-            Debug.Log($"Estoy seleccionando {raycastHit.collider.gameObject.name}");
+            objectFoundName = raycastHit.collider.gameObject.name;
+            Debug.Log($"Estoy seleccionando {objectFoundName}");
             // Lo intento coger. Si he podido, lo elimino de la escena. Si no, lo dejo ahi.
-            // Busco un ItemData asociado a ese objeto
-            
+            if (inventory.GetObject(objectFoundName))
+            {
+                Destroy(raycastHit.collider.gameObject);
+                return;
+            }
+            return;
         }
-
-
     }
 }

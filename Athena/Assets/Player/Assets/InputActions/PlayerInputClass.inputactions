@@ -52,12 +52,12 @@
                 },
                 {
                     "name": "Coger",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "1789a445-4cbb-472e-888f-b88937c0f00a",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
+                    "interactions": "Press",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
