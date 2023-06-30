@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+using UnityEngine.UI;
 public class showHotbar : MonoBehaviour
 {
     /* showHotbar
@@ -11,17 +11,12 @@ public class showHotbar : MonoBehaviour
     */
 
     // VARIABLES
-	
+    public ItemData inventory;
+    
 	
 
     // FUNCIONES
-    void Awake() 
-    {
-        
-    }
-
-    
-    void FixedUpdate()
+    void FixedUpdate() // Mostrar Hotbar todo el rato
     {
         
     }

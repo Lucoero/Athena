@@ -23,7 +23,7 @@ public class inventoryControls : MonoBehaviour
     bool inventoryIsOpen = false;
     string objectFoundName;
     // FUNCIONES
-    public void ActivateInventory(InputAction.CallbackContext context) // 1. Coge la I
+    public void ActivateInventory(InputAction.CallbackContext context) // 1. Con la I
     {
         if (inventoryIsOpen)
         {
@@ -35,7 +35,7 @@ public class inventoryControls : MonoBehaviour
         inventoryIsOpen = true;
         return;
     }
-    public void GetItem(InputAction.CallbackContext context) //2. Coge la E
+    public void GetItem(InputAction.CallbackContext context) //2. Con la E
     {
         if (context.performed){ return; } // Para que no se repita en release
         // Calculo la direccion de la mirada
@@ -46,7 +46,7 @@ public class inventoryControls : MonoBehaviour
         if (Physics.Raycast(player.position, direccion, out RaycastHit raycastHit, pickupDistance))
         {
             objectFoundName = raycastHit.collider.gameObject.name;
-            Debug.Log($"Estoy seleccionando {objectFoundName}");
+            // Debug.Log($"Estoy seleccionando {objectFoundName}");
             // Lo intento coger. Si he podido, lo elimino de la escena. Si no, lo dejo ahi.
             if (inventory.GetObject(objectFoundName))
             {

@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 [CreateAssetMenu (menuName = "Assets/InventorySystem/ItemData")]
-public class ItemData : ScriptableObject, IPointerEnterHandler
+public class ItemData : ScriptableObject, IPointerEnterHandler, IPointerExitHandler
 {
     /* itemData
      * Genera los assets de los items
@@ -23,7 +23,11 @@ public class ItemData : ScriptableObject, IPointerEnterHandler
     // FUNCIONES 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        Debug.Log($"He pasado por encima de {this.name}");
+        // Debug.Log($"He pasado por encima de {this.name}");
+        // En un futuro haremos que el objeto emita algo de luz
     }
-
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        // Aqui quitaremos la luz
+    }
 }

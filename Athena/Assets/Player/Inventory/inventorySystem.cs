@@ -7,7 +7,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 [CreateAssetMenu(menuName = "Assets/InventorySystem/Inventory")]
-[Serializable]
+[Serializable] // Esto hace que no se borre el inventario.
 public class inventorySystem : ScriptableObject
 {
     /* inventorySystem
@@ -24,6 +24,7 @@ public class inventorySystem : ScriptableObject
     */
     // VARIABLES
     public int maxSize = 10; // Empezando a contar desde el 1 
+    public int maxStack = 64;
     public ItemData[] itemList = new ItemData[10]; // De momento no tenemos en cuenta la cantidad de cada objeto
     public int[] itemCount = new int[10];
     public void ChangeOrder(int pos1, int pos2)
@@ -51,13 +52,25 @@ public class inventorySystem : ScriptableObject
                     Debug.Log($"No hemos encontrado ningun asset con nombre {objectFoundName}");
                     return false;
                 }
-                ItemData newItem = (ItemData)AssetDatabase.LoadAssetAtPath(AssetDatabase.GUIDToAssetPath(assetsPropuestos[0]), typeof(ItemData));
-                Debug.Log($"Vamos a meter en itemList {newItem.itemName} "); // Estoy cogiendo la nada, y no se por que
+                ItemData newItem = (ItemData)AssetDatabase.LoadAssetAtPath(AssetDatabase.GUIDToAssetPath(assetsPropuestos[0]), typeof(ItemData)); // Lo cojo usando el GUID
                 // Lo meto en las cajas
                 itemList[i] = newItem; // La funcion se activa 2 veces. La primera mete a la persona, pero como en la segunda no hay nada caput.
                 itemCount[i] = 1;
-
-                return true; // Avisamos de que se ha conseguido
+                return true; // Avisamos de que se ha conseguido para que la funcion que ha llamado siga a lo suyo
+            }
+            else if (itemList[i].name == objectFoundName) // Hemos encontrado el mismo objeto --> Lo sumo
+            {
+                if (itemCount[i] >= maxStack)
+                {
+                    Debug.Log($"Tengo {maxStack} o mas de {maxStack} de {itemList[i]} en la posición {i} del inventario");
+                    // Sigo itinerando...
+                }
+                else
+                {
+                    itemCount[i] = itemCount[i] + 1;
+                    return true;
+                }
+                
             }
         }
         Debug.Log("El inventario esta lleno");

@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Svens_Inventory
   m_EditorClassIdentifier: 
   maxSize: 10
+  maxStack: 64
   itemList:
+  - {fileID: 11400000, guid: 51c46d8cc9a53f645b0d1634dbb191cc, type: 2}
   - {fileID: 11400000, guid: 51c46d8cc9a53f645b0d1634dbb191cc, type: 2}
   - {fileID: 0}
   - {fileID: 0}
@@ -23,5 +25,4 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
-  itemCount: 01000000000000000000000000000000000000000000000000000000000000000000000000000000
+  itemCount: 40000000010000000000000000000000000000000000000000000000000000000000000000000000
