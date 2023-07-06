@@ -15,4 +15,4 @@ MonoBehaviour:
   itemName: Girl
   description: "Idk i needed an object \t"
   model: {fileID: 919132149155446097, guid: ebc2cd5a8b6ff49438219c57e7c1a912, type: 3}
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 24304baf16e57a1459089b7d0ef1171f, type: 3}

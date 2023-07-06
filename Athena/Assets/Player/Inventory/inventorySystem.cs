@@ -27,6 +27,7 @@ public class inventorySystem : ScriptableObject
     public int maxStack = 64;
     public ItemData[] itemList = new ItemData[10]; // De momento no tenemos en cuenta la cantidad de cada objeto
     public int[] itemCount = new int[10];
+    public int selectedItemPos = 0; // El item seleccionado al principio es el de la pos 0.
     public void ChangeOrder(int pos1, int pos2)
     {
         // Primero comprobamos que el cambio se pueda realizar
@@ -54,7 +55,7 @@ public class inventorySystem : ScriptableObject
                 }
                 ItemData newItem = (ItemData)AssetDatabase.LoadAssetAtPath(AssetDatabase.GUIDToAssetPath(assetsPropuestos[0]), typeof(ItemData)); // Lo cojo usando el GUID
                 // Lo meto en las cajas
-                itemList[i] = newItem; // La funcion se activa 2 veces. La primera mete a la persona, pero como en la segunda no hay nada caput.
+                itemList[i] = newItem;
                 itemCount[i] = 1;
                 return true; // Avisamos de que se ha conseguido para que la funcion que ha llamado siga a lo suyo
             }
@@ -76,14 +77,15 @@ public class inventorySystem : ScriptableObject
         Debug.Log("El inventario esta lleno");
         return false; // Si no se puede coger, lo dejamos ahi y avisamos del fallo
     }
-    public bool DropObject(int pos)
+    public bool DropObject()
     {
-        if (itemList[pos] != null)
+        if (itemList[selectedItemPos] != null)
         {
-            Instantiate(itemList[pos]); // Lo dejamos en el suelo
-            itemList[pos] = null; // Lo eliminamos del inventario
+            Instantiate(itemList[selectedItemPos]); // Lo dejamos en el suelo
+            itemList[selectedItemPos] = null; // Lo eliminamos del inventario
             return true;
         }
+        Debug.Log($"No se ha podido tirar el objeto {itemList[selectedItemPos].itemName}");
         return false;
     }
 }
