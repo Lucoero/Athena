@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
@@ -20,7 +18,7 @@ public class showHotbar : MonoBehaviour
     // FUNCIONES
     public void Start() // Inicializa los sprites en los botones
     {
-        foreach (UnityEngine.UI.Button button in buttons) 
+        foreach (Button button in buttons) 
         {
             try
             {
@@ -38,7 +36,7 @@ public class showHotbar : MonoBehaviour
     }
     public void UpdateHotbar() // Actualiza los sprites en los botones
     {
-        foreach (UnityEngine.UI.Button button in buttons)
+        foreach (Button button in buttons)
         {
             try
             {

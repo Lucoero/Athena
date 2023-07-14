@@ -52,7 +52,7 @@ public class inventoryControls : MonoBehaviour
             if (Physics.Raycast(player.position, direccion, out RaycastHit raycastHit, pickupDistance))
             {
                 objectFoundName = raycastHit.collider.gameObject.name;
-                if (objectFoundName.Contains("(Clone)")) { objectFoundName = objectFoundName.Remove(objectFoundName.Length - 7); } // Si ya ha sido instanciado, buscare por el original en vez de el clon.
+                if (objectFoundName.Contains("(Clone)")) { objectFoundName = objectFoundName.Remove(objectFoundName.Length - 7); } //Buscaré el original en vez de el clon.
                 // Debug.Log($"Estoy seleccionando {objectFoundName}");
                 // Lo intento coger. Si he podido, lo elimino de la escena. Si no, lo dejo ahi.
                 if (inventory.GetObject(objectFoundName))
@@ -72,10 +72,9 @@ public class inventoryControls : MonoBehaviour
     {
         if (context.performed) 
         {
-            Debug.Log("iniciando la tirada de cosas");
-            if (inventory.DropObject(inventory.selectedItemPos, player.position + player.forward * dropDistance)) // Si ha funcionado, actualizo los sprites
+            if (inventory.DropObject(inventory.selectedItemPos, player.position + player.forward * dropDistance)) 
             {
-                showHotbar.UpdateHotbar();
+                showHotbar.UpdateHotbar(); // Si ha funcionado, actualizo los sprites
                 return;
             }
         } 
