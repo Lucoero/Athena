@@ -12,7 +12,7 @@ public class showHotbar : MonoBehaviour
     */
 
     // VARIABLES
-    public UnityEngine.UI.Button[] buttons = new UnityEngine.UI.Button[5];
+    public Button[] buttons = new Button[5];
     public inventorySystem inventory;
     public Sprite defaultSprite;
 
@@ -36,15 +36,21 @@ public class showHotbar : MonoBehaviour
         i = 0; // Reseteo el contador
         buttons[inventory.selectedItemPos].Select(); // Hago que el item seleccionado brille
     }
-    public void displaySprite(int pos) // Actualiza los sprites en los botones
+    public void UpdateHotbar() // Actualiza los sprites en los botones
     {
-        try
+        foreach (UnityEngine.UI.Button button in buttons)
         {
-            buttons[pos].image.sprite = inventory.itemList[i].icon;
+            try
+            {
+                button.image.sprite = inventory.itemList[i].icon;
+                i++;
+            }
+            catch
+            {
+                button.image.sprite = defaultSprite;
+                i++;
+            }
         }
-        catch
-        {
-            buttons[pos].image.sprite = defaultSprite;
-        }
+        i = 0; // Reseteo el contador
     }
 }

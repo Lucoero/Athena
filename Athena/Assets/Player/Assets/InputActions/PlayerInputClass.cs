@@ -73,9 +73,18 @@ public partial class @PlayerInputClass: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Coger"",
+                    ""name"": ""Recoger"",
                     ""type"": ""Value"",
-                    ""id"": ""1789a445-4cbb-472e-888f-b88937c0f00a"",
+                    ""id"": ""4a9dfeac-0905-4627-8fb9-031b2c4ae355"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press"",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Tirar Objeto"",
+                    ""type"": ""Value"",
+                    ""id"": ""7acd739b-0919-4dbe-9c5e-e238963582fd"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""Press"",
@@ -283,12 +292,23 @@ public partial class @PlayerInputClass: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""40569e2e-a4ee-424e-a1f5-5ff46b2ef8ea"",
+                    ""id"": ""7ae7000b-8eeb-40c4-b9ca-2c436ecc89cb"",
                     ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""Coger"",
+                    ""action"": ""Recoger"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3de563d4-5643-4967-ae92-e6592e22ef3e"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Tirar Objeto"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -556,105 +576,6 @@ public partial class @PlayerInputClass: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""Keyboard"",
-                    ""id"": ""ff527021-f211-4c02-933e-5976594c46ed"",
-                    ""path"": ""2DVector"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Navigate"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""up"",
-                    ""id"": ""563fbfdd-0f09-408d-aa75-8642c4f08ef0"",
-                    ""path"": ""<Keyboard>/w"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""Navigate"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""up"",
-                    ""id"": ""eb480147-c587-4a33-85ed-eb0ab9942c43"",
-                    ""path"": ""<Keyboard>/upArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""Navigate"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""2bf42165-60bc-42ca-8072-8c13ab40239b"",
-                    ""path"": ""<Keyboard>/s"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""Navigate"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""85d264ad-e0a0-4565-b7ff-1a37edde51ac"",
-                    ""path"": ""<Keyboard>/downArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""Navigate"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""74214943-c580-44e4-98eb-ad7eebe17902"",
-                    ""path"": ""<Keyboard>/a"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""Navigate"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""cea9b045-a000-445b-95b8-0c171af70a3b"",
-                    ""path"": ""<Keyboard>/leftArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""Navigate"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""8607c725-d935-4808-84b1-8354e29bab63"",
-                    ""path"": ""<Keyboard>/d"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""Navigate"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""4cda81dc-9edd-4e03-9d7c-a71a14345d0b"",
-                    ""path"": ""<Keyboard>/rightArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""Navigate"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
                     ""name"": """",
                     ""id"": ""9e92bb26-7e3b-4ec4-b06b-3c8f8e498ddc"",
                     ""path"": ""*/{Submit}"",
@@ -909,7 +830,8 @@ public partial class @PlayerInputClass: IInputActionCollection2, IDisposable
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
         m_Player_Interactuar = m_Player.FindAction("Interactuar", throwIfNotFound: true);
         m_Player_Usar = m_Player.FindAction("Usar", throwIfNotFound: true);
-        m_Player_Coger = m_Player.FindAction("Coger", throwIfNotFound: true);
+        m_Player_Recoger = m_Player.FindAction("Recoger", throwIfNotFound: true);
+        m_Player_TirarObjeto = m_Player.FindAction("Tirar Objeto", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -991,7 +913,8 @@ public partial class @PlayerInputClass: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Look;
     private readonly InputAction m_Player_Interactuar;
     private readonly InputAction m_Player_Usar;
-    private readonly InputAction m_Player_Coger;
+    private readonly InputAction m_Player_Recoger;
+    private readonly InputAction m_Player_TirarObjeto;
     public struct PlayerActions
     {
         private @PlayerInputClass m_Wrapper;
@@ -1001,7 +924,8 @@ public partial class @PlayerInputClass: IInputActionCollection2, IDisposable
         public InputAction @Look => m_Wrapper.m_Player_Look;
         public InputAction @Interactuar => m_Wrapper.m_Player_Interactuar;
         public InputAction @Usar => m_Wrapper.m_Player_Usar;
-        public InputAction @Coger => m_Wrapper.m_Player_Coger;
+        public InputAction @Recoger => m_Wrapper.m_Player_Recoger;
+        public InputAction @TirarObjeto => m_Wrapper.m_Player_TirarObjeto;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1026,9 +950,12 @@ public partial class @PlayerInputClass: IInputActionCollection2, IDisposable
             @Usar.started += instance.OnUsar;
             @Usar.performed += instance.OnUsar;
             @Usar.canceled += instance.OnUsar;
-            @Coger.started += instance.OnCoger;
-            @Coger.performed += instance.OnCoger;
-            @Coger.canceled += instance.OnCoger;
+            @Recoger.started += instance.OnRecoger;
+            @Recoger.performed += instance.OnRecoger;
+            @Recoger.canceled += instance.OnRecoger;
+            @TirarObjeto.started += instance.OnTirarObjeto;
+            @TirarObjeto.performed += instance.OnTirarObjeto;
+            @TirarObjeto.canceled += instance.OnTirarObjeto;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -1048,9 +975,12 @@ public partial class @PlayerInputClass: IInputActionCollection2, IDisposable
             @Usar.started -= instance.OnUsar;
             @Usar.performed -= instance.OnUsar;
             @Usar.canceled -= instance.OnUsar;
-            @Coger.started -= instance.OnCoger;
-            @Coger.performed -= instance.OnCoger;
-            @Coger.canceled -= instance.OnCoger;
+            @Recoger.started -= instance.OnRecoger;
+            @Recoger.performed -= instance.OnRecoger;
+            @Recoger.canceled -= instance.OnRecoger;
+            @TirarObjeto.started -= instance.OnTirarObjeto;
+            @TirarObjeto.performed -= instance.OnTirarObjeto;
+            @TirarObjeto.canceled -= instance.OnTirarObjeto;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1284,7 +1214,8 @@ public partial class @PlayerInputClass: IInputActionCollection2, IDisposable
         void OnLook(InputAction.CallbackContext context);
         void OnInteractuar(InputAction.CallbackContext context);
         void OnUsar(InputAction.CallbackContext context);
-        void OnCoger(InputAction.CallbackContext context);
+        void OnRecoger(InputAction.CallbackContext context);
+        void OnTirarObjeto(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

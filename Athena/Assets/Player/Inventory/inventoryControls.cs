@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering.Universal;
 
 public class inventoryControls : MonoBehaviour
 {
@@ -19,6 +20,8 @@ public class inventoryControls : MonoBehaviour
     public Transform player;
     public float pickupDistance;
     public inventorySystem inventory;
+    public showHotbar showHotbar;
+    public float dropDistance;
 
     bool inventoryIsOpen = false;
     string objectFoundName;
@@ -37,23 +40,44 @@ public class inventoryControls : MonoBehaviour
     }
     public void GetItem(InputAction.CallbackContext context) //2. Con la E
     {
-        if (context.performed){ return; } // Para que no se repita en release
-        // Calculo la direccion de la mirada
-        Vector3 mousePos = Mouse.current.position.ReadValue();
-        Vector3 objectPos = Camera.main.WorldToScreenPoint(player.position);
-        Vector3 direccion = new Vector3(mousePos.x - objectPos.x,player.position.y ,mousePos.y - objectPos.y); // Problema de esto: Si player y object estan a distintas alturas bye bye
-        // Lanzo Raycast: Compruebo que esta a una distancia maxima, y si hay algo entre medias
-        if (Physics.Raycast(player.position, direccion, out RaycastHit raycastHit, pickupDistance))
+        if (context.performed) // Para que no se repita en release
         {
-            objectFoundName = raycastHit.collider.gameObject.name;
-            // Debug.Log($"Estoy seleccionando {objectFoundName}");
-            // Lo intento coger. Si he podido, lo elimino de la escena. Si no, lo dejo ahi.
-            if (inventory.GetObject(objectFoundName))
+            // Calculo la direccion de la mirada
+            Vector3 mousePos = Mouse.current.position.ReadValue();
+            Vector3 objectPos = Camera.main.WorldToScreenPoint(player.position);
+            Vector3 direccion = new Vector3(mousePos.x - objectPos.x, player.position.y, mousePos.y - objectPos.y); // Problema de esto: Si player y object estan a distintas alturas bye bye
+                                                                                                                    // Lanzo Raycast: Compruebo que esta a una distancia maxima, y si hay algo entre medias
+                                                                                                                    // Ademas, el raycast llega hasta el pickupDistance. Es decir, si apuntas en esa direccion puedes pillar
+                                                                                                                    // un objeto que no quieres. 
+            if (Physics.Raycast(player.position, direccion, out RaycastHit raycastHit, pickupDistance))
             {
-                Destroy(raycastHit.collider.gameObject);
+                objectFoundName = raycastHit.collider.gameObject.name;
+                if (objectFoundName.Contains("(Clone)")) { objectFoundName = objectFoundName.Remove(objectFoundName.Length - 7); } // Si ya ha sido instanciado, buscare por el original en vez de el clon.
+                // Debug.Log($"Estoy seleccionando {objectFoundName}");
+                // Lo intento coger. Si he podido, lo elimino de la escena. Si no, lo dejo ahi.
+                if (inventory.GetObject(objectFoundName))
+                {
+                    showHotbar.UpdateHotbar(); // Actualizo la hotbar
+                    Destroy(raycastHit.collider.gameObject);
+                    return;
+                }
+                Debug.Log("Error en la recogida");
                 return;
             }
             return;
-        }
+        } 
+        
+    }
+    public void DropObject(InputAction.CallbackContext context) //3. Con la Q
+    {
+        if (context.performed) 
+        {
+            Debug.Log("iniciando la tirada de cosas");
+            if (inventory.DropObject(inventory.selectedItemPos, player.position + player.forward * dropDistance)) // Si ha funcionado, actualizo los sprites
+            {
+                showHotbar.UpdateHotbar();
+                return;
+            }
+        } 
     }
 }

@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 17810320}
   - component: {fileID: 17810323}
   m_Layer: 5
-  m_Name: 0 Item
+  m_Name: 0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -187,7 +187,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
     m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
-    m_SelectedColor: {r: 0, g: 0, b: 1, a: 1}
+    m_SelectedColor: {r: 0.759434, g: 1, b: 0.9219238, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -270,7 +270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thisButton: {fileID: 17810320}
-  inventoryPosition: 0
+  newPosition: 0
   inventory: {fileID: 11400000, guid: a92823d5ab12f7940a754f645986f006, type: 2}
 --- !u!1 &69729977
 GameObject:
@@ -286,7 +286,7 @@ GameObject:
   - component: {fileID: 69729979}
   - component: {fileID: 69729982}
   m_Layer: 5
-  m_Name: 1st Item
+  m_Name: 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -336,7 +336,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0, g: 0, b: 1, a: 1}
+    m_SelectedColor: {r: 0.759434, g: 1, b: 0.9219238, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -419,7 +419,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thisButton: {fileID: 69729979}
-  inventoryPosition: 1
+  newPosition: 0
   inventory: {fileID: 11400000, guid: a92823d5ab12f7940a754f645986f006, type: 2}
 --- !u!4 &101263340 stripped
 Transform:
@@ -721,7 +721,7 @@ GameObject:
   - component: {fileID: 858868263}
   - component: {fileID: 858868260}
   m_Layer: 5
-  m_Name: 2nd Item
+  m_Name: 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -771,7 +771,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0, g: 0, b: 1, a: 1}
+    m_SelectedColor: {r: 0.759434, g: 1, b: 0.9219238, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -790,7 +790,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 858868261}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 858868263}
+        m_TargetAssemblyTypeName: itemClicked, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &858868261
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -842,7 +854,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thisButton: {fileID: 858868260}
-  inventoryPosition: 2
+  newPosition: 0
   inventory: {fileID: 11400000, guid: a92823d5ab12f7940a754f645986f006, type: 2}
 --- !u!1 &963194225
 GameObject:
@@ -1052,7 +1064,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Hola boina noite
+  m_text: 'Hola bona noite
 
 '
   m_isRightToLeft: 0
@@ -1167,7 +1179,7 @@ MonoBehaviour:
   m_XRTrackingOrigin: {fileID: 0}
   m_ActionsAsset: {fileID: -944628639613478452, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
   m_PointAction: {fileID: -1654692200621890270, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_MoveAction: {fileID: -8784545083839296357, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_MoveAction: {fileID: 0}
   m_SubmitAction: {fileID: 392368643174621059, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
   m_CancelAction: {fileID: 7727032971491509709, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
   m_LeftClickAction: {fileID: 3001919216989983466, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
@@ -1384,7 +1396,7 @@ GameObject:
   - component: {fileID: 1204568015}
   - component: {fileID: 1204568018}
   m_Layer: 5
-  m_Name: 4th Item
+  m_Name: 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1434,7 +1446,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0, g: 0, b: 1, a: 1}
+    m_SelectedColor: {r: 0.759434, g: 1, b: 0.9219238, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -1517,7 +1529,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thisButton: {fileID: 1204568015}
-  inventoryPosition: 4
+  newPosition: 0
   inventory: {fileID: 11400000, guid: a92823d5ab12f7940a754f645986f006, type: 2}
 --- !u!1 &1716458624 stripped
 GameObject:
@@ -1762,8 +1774,24 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: 1789a445-4cbb-472e-888f-b88937c0f00a
-    m_ActionName: Player/New action
+    m_ActionId: 4a9dfeac-0905-4627-8fb9-031b2c4ae355
+    m_ActionName: Player/Recoger[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1716458633}
+        m_TargetAssemblyTypeName: inventoryControls, Assembly-CSharp
+        m_MethodName: DropObject
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 7acd739b-0919-4dbe-9c5e-e238963582fd
+    m_ActionName: Player/Tirar Objeto[/Keyboard/q]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player
@@ -1782,8 +1810,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1716458631}
-  pickupDistance: 10
+  pickupDistance: 100
   inventory: {fileID: 11400000, guid: a92823d5ab12f7940a754f645986f006, type: 2}
+  hotbarActions: {fileID: 2000615810}
+  dropDistance: 2
 --- !u!1 &1729245797 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: ebc2cd5a8b6ff49438219c57e7c1a912, type: 3}
@@ -1797,7 +1827,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1729245797}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 4, z: 1}
@@ -2155,7 +2185,7 @@ GameObject:
   - component: {fileID: 2116849832}
   - component: {fileID: 2116849829}
   m_Layer: 5
-  m_Name: 3rd Item
+  m_Name: 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2205,7 +2235,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0, g: 0, b: 1, a: 1}
+    m_SelectedColor: {r: 0.759434, g: 1, b: 0.9219238, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -2288,5 +2318,62 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thisButton: {fileID: 2116849829}
-  inventoryPosition: 3
+  newPosition: 0
   inventory: {fileID: 11400000, guid: a92823d5ab12f7940a754f645986f006, type: 2}
+--- !u!1001 &8473161176931730979
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8473161178434513454, guid: ad97a08d7018a0847911909e4cf1c8f6, type: 3}
+      propertyPath: m_Name
+      value: My_Cubical_Item
+      objectReference: {fileID: 0}
+    - target: {fileID: 8473161178434513458, guid: ad97a08d7018a0847911909e4cf1c8f6, type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8473161178434513458, guid: ad97a08d7018a0847911909e4cf1c8f6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8473161178434513458, guid: ad97a08d7018a0847911909e4cf1c8f6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8473161178434513458, guid: ad97a08d7018a0847911909e4cf1c8f6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 8473161178434513458, guid: ad97a08d7018a0847911909e4cf1c8f6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8473161178434513458, guid: ad97a08d7018a0847911909e4cf1c8f6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8473161178434513458, guid: ad97a08d7018a0847911909e4cf1c8f6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8473161178434513458, guid: ad97a08d7018a0847911909e4cf1c8f6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8473161178434513458, guid: ad97a08d7018a0847911909e4cf1c8f6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8473161178434513458, guid: ad97a08d7018a0847911909e4cf1c8f6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8473161178434513458, guid: ad97a08d7018a0847911909e4cf1c8f6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ad97a08d7018a0847911909e4cf1c8f6, type: 3}

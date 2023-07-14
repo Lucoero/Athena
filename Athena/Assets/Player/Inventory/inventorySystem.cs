@@ -20,19 +20,24 @@ public class inventorySystem : ScriptableObject
     Habrá funciones para:
         1. Recoger objetos || DONE
         2. Cambiar la posición de dos objetos || DONE
-        3. Tirar objetos || 
+        3. Tirar objetos || FALTA QUE APAREZCAN CON HITBOX
     */
     // VARIABLES
     public int maxSize = 10; // Empezando a contar desde el 1 
     public int maxStack = 64;
-    public ItemData[] itemList = new ItemData[10]; // De momento no tenemos en cuenta la cantidad de cada objeto
+
+    public ItemData[] itemList = new ItemData[10];
     public int[] itemCount = new int[10];
+
     public int selectedItemPos = 0; // El item seleccionado al principio es el de la pos 0.
+
+    // FUNCIONES 
     public void ChangeOrder(int pos1, int pos2)
     {
         // Primero comprobamos que el cambio se pueda realizar
         if (pos1 > maxSize-1 || pos2 > maxSize-1)
         {
+            Debug.Log($"Oye, que me has intentado meter en la posicion del inventario {pos1} y {pos2}");
             return; // Si no se puede, returnea
         }
         ItemData aux = itemList[pos2]; // Guardo el item de la posicion 2 
@@ -40,7 +45,8 @@ public class inventorySystem : ScriptableObject
         itemList[pos1] = aux;
         return;
     }
-    public bool GetObject(string objectFoundName)  // Cojo GameObject porque es lo maximo que me permite los raycasts
+
+    public bool GetObject(string objectFoundName)  // Cojo el nombre del gameObject encontrado
     {
         for (int i = 0; i < maxSize; i++)
         {
@@ -71,21 +77,23 @@ public class inventorySystem : ScriptableObject
                     itemCount[i] = itemCount[i] + 1;
                     return true;
                 }
-                
             }
         }
+        // Si no se puede coger, lo dejamos ahi y avisamos
         Debug.Log("El inventario esta lleno");
-        return false; // Si no se puede coger, lo dejamos ahi y avisamos del fallo
+        return false; 
     }
-    public bool DropObject()
+
+    public bool DropObject(int pos, Vector3 placementPos)
     {
-        if (itemList[selectedItemPos] != null)
-        {
-            Instantiate(itemList[selectedItemPos]); // Lo dejamos en el suelo
-            itemList[selectedItemPos] = null; // Lo eliminamos del inventario
+        if (itemList[pos] != null)
+        { 
+            Instantiate(itemList[pos].model, placementPos, Quaternion.identity); // Lo dejamos en el suelo. LO ENTREGA SIN HITBOX, POR LO QUE NO SE PUEDE VOLVER A RECOGER
+            itemList[pos] = null; // Lo eliminamos del inventario
+            itemCount[pos] = 0;
             return true;
         }
-        Debug.Log($"No se ha podido tirar el objeto {itemList[selectedItemPos].itemName}");
+        Debug.Log($"No hay objeto en esa casilla");
         return false;
     }
 }
