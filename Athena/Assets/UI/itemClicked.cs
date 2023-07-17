@@ -14,8 +14,9 @@ public class itemClicked : MonoBehaviour
 
     // VARIABLES
     public Button thisButton;
-    public int newPosition; // Empezando desde el 0
     public inventorySystem inventory;
+
+    int newPosition; // Empezando desde el 0
 
 
     // FUNCIONES

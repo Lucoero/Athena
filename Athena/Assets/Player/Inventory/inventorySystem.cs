@@ -1,8 +1,5 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -32,17 +29,17 @@ public class inventorySystem : ScriptableObject
     public int selectedItemPos = 0; // El item seleccionado al principio es el de la pos 0.
 
     // FUNCIONES 
-    public void ChangeOrder(int pos1, int pos2)
+    public void ChangeOrder(int pos2)
     {
         // Primero comprobamos que el cambio se pueda realizar
-        if (pos1 > maxSize-1 || pos2 > maxSize-1)
+        if (selectedItemPos > maxSize-1 || pos2 > maxSize-1)
         {
-            Debug.Log($"Oye, que me has intentado meter en la posicion del inventario {pos1} y {pos2}");
+            Debug.Log($"Oye, que me has intentado meter en la posicion del inventario {selectedItemPos} y {pos2}");
             return; // Si no se puede, returnea
         }
         ItemData aux = itemList[pos2]; // Guardo el item de la posicion 2 
-        itemList[pos2] = itemList[pos1];
-        itemList[pos1] = aux;
+        itemList[pos2] = itemList[selectedItemPos];
+        itemList[selectedItemPos] = aux;
         return;
     }
 
@@ -84,14 +81,14 @@ public class inventorySystem : ScriptableObject
         return false; 
     }
 
-    public bool DropObject(int pos, Vector3 placementPos)
+    public bool DropObject(int pos, Vector3 placementPos) // SIN TERMINAR: Si se quiere volver a recoger se tendria que devolver la misma cantidad que se tiro.
     {
         if (itemList[pos] != null)
         { 
-            Instantiate(itemList[pos].model, placementPos, Quaternion.identity); // Lo dejamos en el suelo. LO ENTREGA SIN HITBOX, POR LO QUE NO SE PUEDE VOLVER A RECOGER
+            Instantiate(itemList[pos].model, placementPos, Quaternion.identity); // Lo dejamos en el suelo.
             itemList[pos] = null; // Lo eliminamos del inventario
             itemCount[pos] = 0;
-            return true;
+            return true; 
         }
         Debug.Log($"No hay objeto en esa casilla");
         return false;

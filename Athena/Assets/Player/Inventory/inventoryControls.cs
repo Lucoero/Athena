@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Experimental.Rendering;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering.Universal;
 
@@ -42,15 +41,28 @@ public class inventoryControls : MonoBehaviour
     {
         if (context.performed) // Para que no se repita en release
         {
-            // Calculo la direccion de la mirada
-            Vector3 mousePos = Mouse.current.position.ReadValue();
-            Vector3 objectPos = Camera.main.WorldToScreenPoint(player.position);
-            Vector3 direccion = new Vector3(mousePos.x - objectPos.x, player.position.y, mousePos.y - objectPos.y); // Problema de esto: Si player y object estan a distintas alturas bye bye
-                                                                                                                    // Lanzo Raycast: Compruebo que esta a una distancia maxima, y si hay algo entre medias
-                                                                                                                    // Ademas, el raycast llega hasta el pickupDistance. Es decir, si apuntas en esa direccion puedes pillar
-                                                                                                                    // un objeto que no quieres. 
-            if (Physics.Raycast(player.position, direccion, out RaycastHit raycastHit, pickupDistance))
+            Ray rayCamera_Mouse = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
+            
+            if (Physics.Raycast(rayCamera_Mouse, out RaycastHit raycastHit) && raycastHit.collider.gameObject.tag == "Item") 
             {
+                // Creamos el vector que une al jugador y al item (para comparaciones)
+                Vector3 player_Item = raycastHit.point - player.position;
+                // Ahora comprobamos que:
+
+                //1. No este demasiado lejos
+                if (Vector3.Magnitude(player_Item) > pickupDistance)
+                {
+                    Debug.Log($"Estan muy lejos: {Vector3.Magnitude(player_Item)}");
+                    return;
+                }
+
+                //2. No haya objetos entre medias
+                if (Physics.Raycast(player.position, player_Item, out RaycastHit rayhit) && rayhit.collider.gameObject.tag == "Obstacle")
+                {
+                    Debug.Log($"Esta {rayhit.collider.gameObject.name} entre medias");
+                    return;
+                }
+
                 objectFoundName = raycastHit.collider.gameObject.name;
                 if (objectFoundName.Contains("(Clone)")) { objectFoundName = objectFoundName.Remove(objectFoundName.Length - 7); } //Buscaré el original en vez de el clon.
                 // Debug.Log($"Estoy seleccionando {objectFoundName}");
@@ -61,7 +73,7 @@ public class inventoryControls : MonoBehaviour
                     Destroy(raycastHit.collider.gameObject);
                     return;
                 }
-                Debug.Log("Error en la recogida");
+                Debug.Log($"Error en la recogida, no reconozco {objectFoundName} como item");
                 return;
             }
             return;

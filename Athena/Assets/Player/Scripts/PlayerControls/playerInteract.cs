@@ -15,10 +15,18 @@ public class playerInteract : MonoBehaviour
     // FUNCIONES
     public void OnRightClick(InputAction.CallbackContext context)
     {
+        if (!context.performed)
+        {
+            return;
+        }
         Debug.Log("He usado el click derecho");
     }
     public void OnLeftClick(InputAction.CallbackContext context)
     {
+        if (!context.performed)
+        {
+            return;
+        }
         // POR HACER: Incluir un rango efectivo de uso
         Debug.Log("He usado el click izquierdo");
     }
