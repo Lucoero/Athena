@@ -89,6 +89,15 @@ public partial class @PlayerInputClass: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": ""Press"",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Abrir Inventario"",
+                    ""type"": ""Button"",
+                    ""id"": ""f3b6ca3d-daaf-4425-8d4b-17dd3ebfd43f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -309,6 +318,17 @@ public partial class @PlayerInputClass: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""Tirar Objeto"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1a998fd8-29ca-4b3b-8f0d-034c37895140"",
+                    ""path"": ""<Keyboard>/i"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Abrir Inventario"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -832,6 +852,7 @@ public partial class @PlayerInputClass: IInputActionCollection2, IDisposable
         m_Player_Usar = m_Player.FindAction("Usar", throwIfNotFound: true);
         m_Player_Recoger = m_Player.FindAction("Recoger", throwIfNotFound: true);
         m_Player_TirarObjeto = m_Player.FindAction("Tirar Objeto", throwIfNotFound: true);
+        m_Player_AbrirInventario = m_Player.FindAction("Abrir Inventario", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -915,6 +936,7 @@ public partial class @PlayerInputClass: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Usar;
     private readonly InputAction m_Player_Recoger;
     private readonly InputAction m_Player_TirarObjeto;
+    private readonly InputAction m_Player_AbrirInventario;
     public struct PlayerActions
     {
         private @PlayerInputClass m_Wrapper;
@@ -926,6 +948,7 @@ public partial class @PlayerInputClass: IInputActionCollection2, IDisposable
         public InputAction @Usar => m_Wrapper.m_Player_Usar;
         public InputAction @Recoger => m_Wrapper.m_Player_Recoger;
         public InputAction @TirarObjeto => m_Wrapper.m_Player_TirarObjeto;
+        public InputAction @AbrirInventario => m_Wrapper.m_Player_AbrirInventario;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -956,6 +979,9 @@ public partial class @PlayerInputClass: IInputActionCollection2, IDisposable
             @TirarObjeto.started += instance.OnTirarObjeto;
             @TirarObjeto.performed += instance.OnTirarObjeto;
             @TirarObjeto.canceled += instance.OnTirarObjeto;
+            @AbrirInventario.started += instance.OnAbrirInventario;
+            @AbrirInventario.performed += instance.OnAbrirInventario;
+            @AbrirInventario.canceled += instance.OnAbrirInventario;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -981,6 +1007,9 @@ public partial class @PlayerInputClass: IInputActionCollection2, IDisposable
             @TirarObjeto.started -= instance.OnTirarObjeto;
             @TirarObjeto.performed -= instance.OnTirarObjeto;
             @TirarObjeto.canceled -= instance.OnTirarObjeto;
+            @AbrirInventario.started -= instance.OnAbrirInventario;
+            @AbrirInventario.performed -= instance.OnAbrirInventario;
+            @AbrirInventario.canceled -= instance.OnAbrirInventario;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1216,6 +1245,7 @@ public partial class @PlayerInputClass: IInputActionCollection2, IDisposable
         void OnUsar(InputAction.CallbackContext context);
         void OnRecoger(InputAction.CallbackContext context);
         void OnTirarObjeto(InputAction.CallbackContext context);
+        void OnAbrirInventario(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

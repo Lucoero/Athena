@@ -20,11 +20,11 @@ public class inventorySystem : ScriptableObject
         3. Tirar objetos || Falta que se conserve la Tag
     */
     // VARIABLES
-    public int maxSize = 10; // Empezando a contar desde el 1 
+    public int maxSize = 20; // Empezando a contar desde el 1 
     public int maxStack = 64;
 
-    public ItemData[] itemList = new ItemData[10];
-    public int[] itemCount = new int[10];
+    public ItemData[] itemList = new ItemData[20];
+    public int[] itemCount = new int[20];
 
     public int selectedItemPos = 0; // El item seleccionado al principio es el de la pos 0.
 

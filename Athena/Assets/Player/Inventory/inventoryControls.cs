@@ -20,23 +20,25 @@ public class inventoryControls : MonoBehaviour
     public Transform player;
     public float pickupDistance;
     public inventorySystem inventory;
-    public showHotbar showHotbar;
+    public showInventory showInventory;
     public float dropDistance;
+    public GameObject InventoryUI;
 
     bool inventoryIsOpen = false;
     string objectFoundName;
     // FUNCIONES
+    private void Awake()
+    {
+        InventoryUI.SetActive(false); // Empiezo con el inventario desactivado 
+    }
     public void ActivateInventory(InputAction.CallbackContext context) // 1. Con la I
     {
-        if (inventoryIsOpen)
+        if (context.performed)
         {
-            // Se cierra el inventario
-            inventoryIsOpen = false;
+            InventoryUI.SetActive(inventoryIsOpen); // Activo o desactivo
+            inventoryIsOpen = !inventoryIsOpen; // Cambio el estado del inventario
             return;
-        }
-        // En caso contrario, se abre
-        inventoryIsOpen = true;
-        return;
+        } 
     }
     public void GetItem(InputAction.CallbackContext context) //2. Con la E
     {
@@ -90,7 +92,7 @@ public class inventoryControls : MonoBehaviour
                 // Lo intento coger. Si he podido, lo elimino de la escena. Si no, lo dejo ahi.
                 if (inventory.GetObject(objectFoundName, quantity))
                 {
-                    showHotbar.UpdateHotbar(); // Actualizo la hotbar
+                    showInventory.UpdateInventory(); // Actualizo la hotbar
                     Destroy(raycastHit.collider.gameObject);
                     return;
                 }
@@ -107,7 +109,7 @@ public class inventoryControls : MonoBehaviour
         {
             if (inventory.DropObject(inventory.selectedItemPos, player.position + player.forward * dropDistance)) 
             {
-                showHotbar.UpdateHotbar(); // Si ha funcionado, actualizo los sprites
+                showInventory.UpdateInventory(); // Si ha funcionado, actualizo los sprites
                 return;
             }
         } 

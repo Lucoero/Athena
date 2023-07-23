@@ -67,6 +67,15 @@
                     "processors": "",
                     "interactions": "Press",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Abrir Inventario",
+                    "type": "Button",
+                    "id": "f3b6ca3d-daaf-4425-8d4b-17dd3ebfd43f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -287,6 +296,17 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Tirar Objeto",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1a998fd8-29ca-4b3b-8f0d-034c37895140",
+                    "path": "<Keyboard>/i",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Abrir Inventario",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

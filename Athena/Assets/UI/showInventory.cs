@@ -3,14 +3,14 @@ using UnityEngine.InputSystem;
 using TMPro;
 using UnityEngine.UI;
 
-public class showHotbar : MonoBehaviour
+public class showInventory : MonoBehaviour
 {
     /* showHotbar
      * Muestra los botones en la hotbar
     */
 
     // VARIABLES
-    public Button[] buttons = new Button[5];
+    public Button[] buttons = new Button[10];
     public inventorySystem inventory;
     public Sprite defaultSprite;
 
@@ -34,7 +34,7 @@ public class showHotbar : MonoBehaviour
         i = 0; // Reseteo el contador
         buttons[inventory.selectedItemPos].Select(); // Hago que el item seleccionado brille
     }
-    public void UpdateHotbar() // Actualiza los sprites en los botones
+    public void UpdateInventory() // Actualiza los sprites en los botones
     {
         foreach (Button button in buttons)
         {
