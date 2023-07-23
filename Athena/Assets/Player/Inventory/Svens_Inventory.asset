@@ -15,7 +15,7 @@ MonoBehaviour:
   maxSize: 10
   maxStack: 64
   itemList:
-  - {fileID: 11400000, guid: 1ca28652495a6e440bb748bd45978d71, type: 2}
+  - {fileID: 11400000, guid: 1d39860bcaf7e8c41b362cda1e644b34, type: 2}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -25,5 +25,5 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  itemCount: 40000000000000000000000000000000000000000000000000000000000000000000000000000000
+  itemCount: 0a000000000000000000000000000000000000000000000000000000000000000000000000000000
   selectedItemPos: 1

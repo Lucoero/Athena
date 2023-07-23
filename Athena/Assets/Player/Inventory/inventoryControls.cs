@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Experimental.Rendering;
@@ -49,14 +50,14 @@ public class inventoryControls : MonoBehaviour
                 Vector3 player_Item = raycastHit.point - player.position;
                 // Ahora comprobamos que:
 
-                //1. No este demasiado lejos
+                // 1. No este demasiado lejos
                 if (Vector3.Magnitude(player_Item) > pickupDistance)
                 {
                     Debug.Log($"Estan muy lejos: {Vector3.Magnitude(player_Item)}");
                     return;
                 }
 
-                //2. No haya objetos entre medias
+                // 2. No haya objetos entre medias
                 if (Physics.Raycast(player.position, player_Item, out RaycastHit rayhit) && rayhit.collider.gameObject.tag == "Obstacle")
                 {
                     Debug.Log($"Esta {rayhit.collider.gameObject.name} entre medias");
@@ -64,10 +65,30 @@ public class inventoryControls : MonoBehaviour
                 }
 
                 objectFoundName = raycastHit.collider.gameObject.name;
-                if (objectFoundName.Contains("(Clone)")) { objectFoundName = objectFoundName.Remove(objectFoundName.Length - 7); } //Buscaré el original en vez de el clon.
+                // Recogo la cantidad del objeto
+                int quantity = 1; // Por defecto pienso que va a ser 1
+                int ncifras = 0; // Por defecto pienso que me lo indica con 0 numero de cifras en el nombre
+                try
+                {
+                    quantity = Convert.ToInt32(objectFoundName.Remove(0, objectFoundName.Length - 2)); // Pienso que van a ser 2 cifras
+                    ncifras = 2;
+                }
+                catch 
+                {
+                    try
+                    {
+                        quantity = Convert.ToInt32(objectFoundName.Remove(0, objectFoundName.Length - 1)); // Pienso que va ser 1 cifra
+                        ncifras = 1;
+                    }
+                    catch
+                    {
+                     // No está indicado y, por ende, es solo 1.
+                    }
+                }
+                if (objectFoundName.Contains("(Clone)")) { objectFoundName = objectFoundName.Remove(objectFoundName.Length - 7 - ncifras); } //Buscaré el original en vez de el clon.
                 // Debug.Log($"Estoy seleccionando {objectFoundName}");
                 // Lo intento coger. Si he podido, lo elimino de la escena. Si no, lo dejo ahi.
-                if (inventory.GetObject(objectFoundName))
+                if (inventory.GetObject(objectFoundName, quantity))
                 {
                     showHotbar.UpdateHotbar(); // Actualizo la hotbar
                     Destroy(raycastHit.collider.gameObject);

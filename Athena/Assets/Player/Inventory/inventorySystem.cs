@@ -17,7 +17,7 @@ public class inventorySystem : ScriptableObject
     Habrá funciones para:
         1. Recoger objetos || DONE
         2. Cambiar la posición de dos objetos || DONE
-        3. Tirar objetos || FALTA QUE APAREZCAN CON HITBOX
+        3. Tirar objetos || Falta que se conserve la Tag
     */
     // VARIABLES
     public int maxSize = 10; // Empezando a contar desde el 1 
@@ -43,7 +43,7 @@ public class inventorySystem : ScriptableObject
         return;
     }
 
-    public bool GetObject(string objectFoundName)  // Cojo el nombre del gameObject encontrado
+    public bool GetObject(string objectFoundName, int quantity)  // Cojo el nombre del gameObject encontrado
     {
         for (int i = 0; i < maxSize; i++)
         {
@@ -59,7 +59,7 @@ public class inventorySystem : ScriptableObject
                 ItemData newItem = (ItemData)AssetDatabase.LoadAssetAtPath(AssetDatabase.GUIDToAssetPath(assetsPropuestos[0]), typeof(ItemData)); // Lo cojo usando el GUID
                 // Lo meto en las cajas
                 itemList[i] = newItem;
-                itemCount[i] = 1;
+                itemCount[i] = quantity;
                 return true; // Avisamos de que se ha conseguido para que la funcion que ha llamado siga a lo suyo
             }
             else if (itemList[i].name == objectFoundName) // Hemos encontrado el mismo objeto --> Lo sumo
@@ -85,7 +85,10 @@ public class inventorySystem : ScriptableObject
     {
         if (itemList[pos] != null)
         { 
-            Instantiate(itemList[pos].model, placementPos, Quaternion.identity); // Lo dejamos en el suelo.
+            GameObject item = Instantiate(itemList[pos].model, placementPos, Quaternion.identity); // Lo dejamos en el suelo.
+            item.tag = "Item";
+            // Le podemos añadir al nombre la cantidad que habia del item. De esta forma cuando lo recogamos podemos extraerlo
+            item.name = item.name + Convert.ToString(itemCount[pos]);
             itemList[pos] = null; // Lo eliminamos del inventario
             itemCount[pos] = 0;
             return true; 
