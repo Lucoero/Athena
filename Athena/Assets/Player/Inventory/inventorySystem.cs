@@ -26,20 +26,33 @@ public class inventorySystem : ScriptableObject
     public ItemData[] itemList = new ItemData[20];
     public int[] itemCount = new int[20];
 
-    public int selectedItemPos = 0; // El item seleccionado al principio es el de la pos 0.
+    public int selectedItemPos = 0; // El item seleccionado al principio es el de la pos 0. 
 
     // FUNCIONES 
+    public bool CheckValidSIP(int posProposed) // Comprueba que lo que reciba de otros scripts es valido para selectedItemPos
+    {
+        if (posProposed > maxSize-1) { return false; } // No puede ser selectedItemPos
+        posProposed = selectedItemPos;
+        return true;
+    }
+
     public void ChangeOrder(int pos2)
     {
         // Primero comprobamos que el cambio se pueda realizar
-        if (selectedItemPos > maxSize-1 || pos2 > maxSize-1)
+        if (pos2 > maxSize-1)
         {
             Debug.Log($"Oye, que me has intentado meter en la posicion del inventario {selectedItemPos} y {pos2}");
             return; // Si no se puede, returnea
         }
+        // Muevo los items
         ItemData aux = itemList[pos2]; // Guardo el item de la posicion 2 
         itemList[pos2] = itemList[selectedItemPos];
         itemList[selectedItemPos] = aux;
+
+        // Muevo tambien las cantidades
+        int aux2 = itemCount[pos2];
+        itemCount[pos2] = itemCount[selectedItemPos];
+        itemCount[selectedItemPos] = aux2;
         return;
     }
 

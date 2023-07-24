@@ -24,10 +24,10 @@ public class inventoryControls : MonoBehaviour
     public float dropDistance;
     public GameObject InventoryUI;
 
-    bool inventoryIsOpen = false;
+    bool inventoryIsOpen = true;
     string objectFoundName;
     // FUNCIONES
-    private void Awake()
+    private void Start()
     {
         InventoryUI.SetActive(false); // Empiezo con el inventario desactivado 
     }
@@ -38,7 +38,7 @@ public class inventoryControls : MonoBehaviour
             InventoryUI.SetActive(inventoryIsOpen); // Activo o desactivo
             inventoryIsOpen = !inventoryIsOpen; // Cambio el estado del inventario
             return;
-        } 
+        }
     }
     public void GetItem(InputAction.CallbackContext context) //2. Con la E
     {
@@ -92,7 +92,7 @@ public class inventoryControls : MonoBehaviour
                 // Lo intento coger. Si he podido, lo elimino de la escena. Si no, lo dejo ahi.
                 if (inventory.GetObject(objectFoundName, quantity))
                 {
-                    showInventory.UpdateInventory(); // Actualizo la hotbar
+                    showInventory.UpdateInventorySprites(); // Actualizo la hotbar
                     Destroy(raycastHit.collider.gameObject);
                     return;
                 }
@@ -109,7 +109,7 @@ public class inventoryControls : MonoBehaviour
         {
             if (inventory.DropObject(inventory.selectedItemPos, player.position + player.forward * dropDistance)) 
             {
-                showInventory.UpdateInventory(); // Si ha funcionado, actualizo los sprites
+                showInventory.UpdateInventorySprites(); // Si ha funcionado, actualizo los sprites
                 return;
             }
         } 

@@ -21,7 +21,9 @@ public class itemClicked : MonoBehaviour
     public void OnClick()
     {
         newPosition = Convert.ToInt32(EventSystem.current.currentSelectedGameObject.name);
-        inventory.selectedItemPos = newPosition; // Actualizo el item seleccionado
-        thisButton.Select(); // Hago que brille.
+        if (inventory.CheckValidSIP(newPosition)) // Actualizo el item seleccionado
+        {
+            thisButton.Select(); // Hago que brille.
+        } 
     }
 }
