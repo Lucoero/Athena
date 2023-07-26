@@ -26,7 +26,7 @@ public class draggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public void OnDrag(PointerEventData eventData)
     {
         Vector3 mousePos = new Vector3 (Mouse.current.position.ReadValue().x, Mouse.current.position.ReadValue().y,Canvas.transform.position.y);
-        mousePos = Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, Camera.main.transform.position.y-Canvas.transform.position.y));
+        mousePos = Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, Camera.main.transform.position.y - mousePos.z));
         transform.position = mousePos;
     }
 
@@ -34,7 +34,6 @@ public class draggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     {
         transform.SetParent(papaPrimigenio); // Lo devuelvo a su ubicacion en la jerarquia
         itemInsideSlot.raycastTarget = true; // Para que le vuelvan a afectar los Raycasts
-        showInventory.UpdateInventorySprites(); // Updateo el inventario
     }
 
 }

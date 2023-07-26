@@ -12,13 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c184f3e6f0bf8d64a97961197cc0e2ed, type: 3}
   m_Name: Svens_Inventory
   m_EditorClassIdentifier: 
-  maxSize: 10
+  maxSize: 20
   maxStack: 64
   itemList:
   - {fileID: 11400000, guid: 1d39860bcaf7e8c41b362cda1e644b34, type: 2}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 11400000, guid: 51c46d8cc9a53f645b0d1634dbb191cc, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 11400000, guid: 1ca28652495a6e440bb748bd45978d71, type: 2}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -31,9 +35,5 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  itemCount: 0200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-  selectedItemPos: 14
+  itemCount: 0300000000000000000000000000000001000000000000000000000001000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  selectedItemPos: 7

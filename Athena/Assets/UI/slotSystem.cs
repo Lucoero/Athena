@@ -17,10 +17,20 @@ public class slotSystem : MonoBehaviour, IDropHandler
     // FUNCIONES
     public void OnDrop(PointerEventData eventData)
     {
-        GameObject itemDropped = eventData.pointerDrag; // Cojo el slot que este justo debajo del ratón
-        draggableItem item = itemDropped.GetComponent<draggableItem>(); // Llamo al transform del script draggableItem relacionado con el objeto
-        item.papaPrimigenio = transform; // Le cambio el padre para que, al dejar de draggear, snapee hacia el. 
-        // POR TERMINAR Falta que modifique la informacion en los arrays del inventario
-        inventory.ChangeOrder(Convert.ToInt32(transform.name)); // Cojo el nombre del botón y lo uso como posición para intercambiar en el inventario
+        // Variables
+        GameObject sprite_A = eventData.pointerDrag; // Sprite que estamos draggeando
+        Transform spriteB = transform.GetChild(0); // Sprite en el slot B.
+        draggableItem item_A = sprite_A.GetComponent<draggableItem>(); // Llamo al transform del script draggableItem relacionado con el objeto
+        Transform slot_A = item_A.papaPrimigenio; // Viejo slot de A
+        // Transform es slot_B
+        if (inventory.ChangeOrder(Convert.ToInt32(transform.name), Convert.ToInt32(slot_A.name))) // Marcar cambios en el inventario
+        {
+            // Cambiar la posicion item A
+            item_A.papaPrimigenio = transform; // Le cambio el padre para que, al dejar de draggear, snapee hacia el.
+            // Cambiar la posicion item B
+            spriteB.SetParent(slot_A);
+            inventory.selectedItemPos = Convert.ToInt32(transform.name); // Cambio el selectedItemPos para que el jugador no se pierda.
+            return;
+        }   
     }
 }

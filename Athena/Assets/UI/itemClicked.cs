@@ -7,7 +7,7 @@ public class itemClicked : MonoBehaviour
 {
     /* itemClicked
      * Cuando se pulsa el boton, recoge la posicion del boton por su nombre
-     * para enviar la informacion a itemSystem y a showHotbar
+     * para enviar la informacion a itemSystem y a showInventory
     */
 
     // VARIABLES
@@ -21,9 +21,8 @@ public class itemClicked : MonoBehaviour
     public void OnClick()
     {
         newPosition = Convert.ToInt32(EventSystem.current.currentSelectedGameObject.name);
-        if (inventory.CheckValidSIP(newPosition)) // Actualizo el item seleccionado
-        {
-            thisButton.Select(); // Hago que brille.
-        } 
+        inventory.selectedItemPos = newPosition; // Actualizo el item seleccionado
+        thisButton.Select(); // Hago que brille.
+        return;
     }
 }

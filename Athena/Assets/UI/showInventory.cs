@@ -10,7 +10,7 @@ public class showInventory : MonoBehaviour
     */
 
     // VARIABLES
-    public Button[] buttons = new Button[10];
+    public Button[] buttons = new Button[20];
     public inventorySystem inventory;
     public Sprite defaultSprite;
 
@@ -22,12 +22,12 @@ public class showInventory : MonoBehaviour
         {
             try
             {
-                button.GetComponentInChildren<Image>().sprite = inventory.itemList[i].icon;
+                button.transform.GetChild(0).GetComponent<Image>().sprite = inventory.itemList[i].icon;
                 i++;
             }
             catch
             {
-                button.GetComponentInChildren<Image>().sprite = defaultSprite;
+                button.transform.GetChild(0).GetComponent<Image>().sprite = defaultSprite;
                 i++;
             }
         }
@@ -40,12 +40,12 @@ public class showInventory : MonoBehaviour
         {
             try
             {
-                button.GetComponentInChildren<Image>().sprite = inventory.itemList[i].icon;
+                button.transform.GetChild(0).GetComponent<Image>().sprite = inventory.itemList[i].icon;
                 i++;
             }
             catch
             {
-                button.GetComponentInChildren<Image>().sprite = defaultSprite;
+                button.transform.GetChild(0).GetComponent<Image>().sprite = defaultSprite;
                 i++;
             }
         }

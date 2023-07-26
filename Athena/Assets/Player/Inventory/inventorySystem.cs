@@ -20,40 +20,39 @@ public class inventorySystem : ScriptableObject
         3. Tirar objetos || Falta que se conserve la Tag
     */
     // VARIABLES
-    public int maxSize = 20; // Empezando a contar desde el 1 
-    public int maxStack = 64;
+    public int maxSize; // Empezando a contar desde el 1 
+    public int maxStack;
 
     public ItemData[] itemList = new ItemData[20];
     public int[] itemCount = new int[20];
 
-    public int selectedItemPos = 0; // El item seleccionado al principio es el de la pos 0. 
+    public int selectedItemPos;
 
     // FUNCIONES 
-    public bool CheckValidSIP(int posProposed) // Comprueba que lo que reciba de otros scripts es valido para selectedItemPos
+    public bool ChangeOrder(int pos2, int pos1 = 314)
     {
-        if (posProposed > maxSize-1) { return false; } // No puede ser selectedItemPos
-        posProposed = selectedItemPos;
-        return true;
-    }
-
-    public void ChangeOrder(int pos2)
-    {
-        // Primero comprobamos que el cambio se pueda realizar
-        if (pos2 > maxSize-1)
+        if (pos1 == 314)
         {
-            Debug.Log($"Oye, que me has intentado meter en la posicion del inventario {selectedItemPos} y {pos2}");
-            return; // Si no se puede, returnea
+            pos1 = selectedItemPos;
+        } // Si no hemos entrado en el if es porque hemos metido un input en pos1
+        
+        // Primero comprobamos que el cambio se pueda realizar
+        if (pos2 > maxSize-1 || pos1 > maxSize-1 || pos2 == pos1)
+        {
+            Debug.Log(maxSize);
+            Debug.Log($"Oye, que me has intentado meter en la posicion del inventario {pos2} y {pos1}");
+            return false; // Si no se puede, returnea
         }
         // Muevo los items
         ItemData aux = itemList[pos2]; // Guardo el item de la posicion 2 
-        itemList[pos2] = itemList[selectedItemPos];
-        itemList[selectedItemPos] = aux;
+        itemList[pos2] = itemList[pos1];
+        itemList[pos1] = aux;
 
         // Muevo tambien las cantidades
         int aux2 = itemCount[pos2];
-        itemCount[pos2] = itemCount[selectedItemPos];
-        itemCount[selectedItemPos] = aux2;
-        return;
+        itemCount[pos2] = itemCount[pos1];
+        itemCount[pos1] = aux2;
+        return true;
     }
 
     public bool GetObject(string objectFoundName, int quantity)  // Cojo el nombre del gameObject encontrado

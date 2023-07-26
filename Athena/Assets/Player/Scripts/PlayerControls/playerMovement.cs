@@ -43,7 +43,6 @@ public class playerMovement: MonoBehaviour
         {
             speed = walkingSpeed;
         }
-        
     }
     public void OnMovement (InputAction.CallbackContext context)
     {
