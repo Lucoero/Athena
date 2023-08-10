@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+using TMPro;
+using UnityEngine.UI;
 public class displayHealthBar : MonoBehaviour
 {
     /* displayHealthBar
@@ -13,6 +14,7 @@ public class displayHealthBar : MonoBehaviour
 
     // VARIABLES
     public playerData playerData;
+    public GameObject healthDisplayValue;
 
     private float health;
 
@@ -20,11 +22,23 @@ public class displayHealthBar : MonoBehaviour
     void Start() 
     {
         health = playerData.health;
+        //healthDisplayValue.text = Convert.ToString(health);
     }
 
-    
-    void OnLosingHealth()
+    public void UpdateHealthDisplay()
     {
-        
+
+    }
+    public void OnChangingHealth(float healthStep)
+    {
+        health += healthStep;
+        if (health < 0)
+        {
+            health = 0;
+        }
+        else if(health > playerData.maxHealth){
+            health = playerData.maxHealth;
+        }
+        UpdateHealthDisplay();
     }
 }

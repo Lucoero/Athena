@@ -23,6 +23,7 @@ public class inventoryControls : MonoBehaviour
     public showInventory showInventory;
     public float dropDistance;
     public GameObject InventoryUI;
+    public GameObject Hotbar;
 
     bool inventoryIsOpen = true;
     string objectFoundName;
@@ -36,6 +37,14 @@ public class inventoryControls : MonoBehaviour
         if (context.performed)
         {
             InventoryUI.SetActive(inventoryIsOpen); // Activo o desactivo
+            if (inventoryIsOpen)
+            {
+                Hotbar.transform.SetParent(InventoryUI.transform); // El padre es InventoryGroup
+            }
+            else
+            {
+                Hotbar.transform.SetParent(InventoryUI.transform.parent.parent); // El padre es UICanvas
+            }
             inventoryIsOpen = !inventoryIsOpen; // Cambio el estado del inventario
             return;
         }
